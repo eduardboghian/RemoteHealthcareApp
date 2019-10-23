@@ -19,6 +19,47 @@ const userSchema = new mongooose.Schema({
     } 
 })
 
+const docSchema = new mongooose.Schema({
+    name: {
+        type: String,
+        required: true,
+    },
+    email: {
+        type: String,
+        required: true,
+    },
+    password: {
+        type: String,
+        required: true,
+    },
+    practiceNumber: {
+        type: String,
+        required: true,
+    },
+    idCardNr: {
+        type: String,
+        required: true,
+    },
+    type: {
+        type: String
+    },
+    approved: {
+        type: Boolean
+    } 
+
+})
+
+
+const docRegisterValidation = user => {
+    const schema = {
+        name: Joi.string().min(6).required(),
+        email: Joi.string().min(6).required().email(),
+        password: Joi.string().min(8).required(),
+        idCardNr: Joi.string().min(6).required(),
+        practiceNumber: Joi.string().min(6).required(),
+    }
+    return Joi.validate(user, schema)
+}
 
 const registerValidation = user => {
     const schema = {
@@ -37,6 +78,8 @@ const loginValidation = user => {
     return Joi.validate(user, schema)
 }
 
+module.exports.docRegisterValidation = docRegisterValidation
 module.exports.loginValidation = loginValidation
 module.exports.registerValidation = registerValidation
 module.exports.User = mongooose.model('User', userSchema)
+module.exports.Doctor = mongooose.model('Doctor', docSchema)

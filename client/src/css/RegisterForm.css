@@ -1,0 +1,60 @@
+.wr {
+  width: 30vw;
+  height: 70vh;
+  -webkit-box-shadow: 0 0 5px #ddd;
+          box-shadow: 0 0 5px #ddd;
+  position: relative;
+  margin: 15vh auto;
+}
+
+.type-btns {
+  width: 100%;
+  height: 60px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto 60px auto;
+      grid-template-columns: auto 60px auto;
+}
+
+.type-btns div {
+  border: 1px solid #282828;
+  background: #fff;
+  border-radius: 90%;
+  text-align: center;
+  line-height: 55px;
+  font-size: 24px;
+  color: #000;
+  font-weight: 700;
+  position: relative;
+}
+
+.type-btns button {
+  height: 50px;
+  border: none;
+  width: 110%;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.type-btns .doc-type-btn {
+  -ms-grid-column-align: right;
+      justify-self: right;
+  border-radius: 0 90px 90px 0;
+}
+
+.type-btns .patient-type-btn {
+  border-radius: 90px 0 0 90px;
+}
+
+form #only-docs {
+  display: none;
+}
+
+form label {
+  width: 96%;
+  height: 50px;
+}
+/*# sourceMappingURL=RegisterForm.css.map */

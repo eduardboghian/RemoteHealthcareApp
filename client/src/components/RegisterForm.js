@@ -1,0 +1,99 @@
+import React, { useState } from 'react'
+import '../css/RegisterForm.css'
+import axios from  'axios'
+
+
+
+
+
+export default function RegisterForm() {
+    const [email, setEmail] = useState('')
+    const [name, setName] = useState('')
+    const [password, setPassword] = useState('')
+    const [practiceNumber, setPN] = useState('')
+    const [idCardNr, setICN] = useState('')
+    const [registrationType, setRT] = useState('patient')
+
+    function clickOnType(type) {
+        if(type === 'doc') {
+            document.getElementById("only-docs").style.display = 'block'
+            setRT('doc')
+        }else {
+            document.getElementById("only-docs").style.display = 'none'
+            setRT('patient')
+        }
+            
+    }
+
+    function submitHandler(e, type) {
+        e.preventDefault()
+        if(type === 'patient') {
+            axios.post('http://localhost:3001/api/user/register/patient', {
+                name: name,
+                email: email,
+                password: password
+            })
+            .then(res => console.log(res))
+            .catch(error => {
+                console.log(error)
+            })
+        }else {
+            axios.post('http://localhost:3001/api/user/register/doctor', {
+                name: name,
+                email: email,
+                password: password,
+                practiceNumber: practiceNumber,
+                idCardNr: idCardNr
+            })
+            .then(res => console.log(res))
+            .catch(error => {
+                console.log(error)
+            })
+        }
+        
+    }
+
+    return (
+        <div className='wr'>
+            <div className="register-form">
+                <div className="type-btns">
+                    <button className='patient-type-btn' onClick={ e => clickOnType('patient') } >Patient</button>
+                    <div>Or</div>
+                    <button className='doc-type-btn' onClick={ e => clickOnType('doc') } >Doctor</button>
+                </div>
+
+                <form onSubmit={ e => submitHandler(e, registrationType) } >
+                    <label>
+                        Name:
+                        <input type="text" value={name} name='name' onChange = { e => setName(e.target.value) } />
+                    </label>
+
+                    <label>
+                        Email:
+                        <input type="email" value={email} name='email' onChange = { e => setEmail(e.target.value) }/>
+                    </label>
+
+                    <label>
+                        Password:
+                        <input type="password" value={password} name='password' onChange = { e => setPassword(e.target.value) }/>
+                    </label>
+
+                    <div id="only-docs">
+                        <label >
+                            Practice Number
+                            <input type="text" value={practiceNumber} name='practiceNumber' onChange = { e => setPN(e.target.value) }/>
+                        </label>
+                        <label>
+                            National ID card numbert
+                            <input type="text" value={idCardNr} name='idCardNr' onChange = { e => setICN(e.target.value) } />
+                        </label>
+                    </div>
+
+                    <button type='submit'>Submit</button>
+                </form>
+            </div>
+        </div>
+    )
+}
+
+
