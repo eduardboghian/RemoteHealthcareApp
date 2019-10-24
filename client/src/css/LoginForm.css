@@ -1,8 +1,118 @@
+.login-bg {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background: #ddd;
+}
+
 .login-wr {
   width: 30vw;
   height: 60vh;
   position: relative;
   margin: 20vh auto;
-  border: 1px solid #000;
+  border-radius: 5px;
+  background: #3186F5;
+}
+
+.login-wr .type-btns {
+  padding-top: 35px;
+  width: 96%;
+  position: relative;
+  margin: 50px 2% 0;
+  height: 60px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto 60px auto;
+      grid-template-columns: auto 60px auto;
+}
+
+.login-wr .type-btns div {
+  background: #F75B4A;
+  border-radius: 90%;
+  text-align: center;
+  line-height: 57px;
+  font-size: 24px;
+  color: #fff;
+  font-weight: 700;
+  position: relative;
+}
+
+.login-wr .type-btns button {
+  height: 50px;
+  border: none;
+  width: 110%;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  font-size: 22px;
+  cursor: pointer;
+  background: #fff;
+}
+
+.login-wr .type-btns .doc-type-btn {
+  -ms-grid-column-align: right;
+      justify-self: right;
+  border-radius: 0 90px 90px 0;
+}
+
+.login-wr .type-btns .patient-type-btn {
+  border-radius: 90px 0 0 90px;
+  border: 3px solid #fff;
+  background: #4D9AFF;
+  color: #fff;
+}
+
+.login-wr form {
+  margin-top: 40px;
+}
+
+.login-wr form input {
+  margin: 10px 5%;
+  height: 40px;
+  width: 90%;
+  border: none;
+  background: #fff;
+  border-radius: 10px;
+  text-indent: 15px;
+  font-size: 22px;
+}
+
+.login-wr form label {
+  margin: 0 5%;
+  height: 50px;
+}
+
+.login-wr form div {
+  margin: 50px 5%;
+}
+
+.login-wr form div button {
+  background: #F75B4A;
+  border-radius: 20px;
+  border: none;
+  color: #fff;
+  font-size: 20px;
+  width: 150px;
+  height: 40px;
+  float: left;
+  margin-left: 30px;
+  cursor: pointer;
+  border: 3px solid #fff;
+}
+
+.login-wr form div a {
+  text-decoration: none;
+  color: #000;
+  float: right;
+  font-size: 18px;
+  margin-right: 50px;
+  padding-top: 8px;
+  background: #fff;
+  border: 3px solid #fff;
+  border-radius: 20px;
+  padding: 5px 20px;
+  cursor: pointer;
 }
 /*# sourceMappingURL=LoginForm.css.map */

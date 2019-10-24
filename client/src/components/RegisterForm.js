@@ -3,9 +3,6 @@ import '../css/RegisterForm.css'
 import axios from  'axios'
 
 
-
-
-
 export default function RegisterForm() {
     const [email, setEmail] = useState('')
     const [name, setName] = useState('')
@@ -18,9 +15,27 @@ export default function RegisterForm() {
         if(type === 'doc') {
             document.getElementById("only-docs").style.display = 'block'
             setRT('doc')
+            const pbtn = document.getElementById('patient-type-btn')
+            pbtn.style.border = ' none'
+            pbtn.style.color = '#000'
+            pbtn.style.background = '#fff'
+            
+            const btn = document.getElementById('doc-type-btn')
+            btn.style.border = ' 3px solid #fff'
+            btn.style.color = '#fff'
+            btn.style.background = '#4D9AFF'
         }else {
             document.getElementById("only-docs").style.display = 'none'
             setRT('patient')
+            const pbtn = document.getElementById('doc-type-btn')
+            pbtn.style.border = ' none'
+            pbtn.style.color = '#000'
+            pbtn.style.background = '#fff'
+
+            const btn = document.getElementById('patient-type-btn')
+            btn.style.border = ' 3px solid #fff'
+            btn.style.color = '#fff'
+            btn.style.background = '#4D9AFF'
         }
             
     }
@@ -54,12 +69,13 @@ export default function RegisterForm() {
     }
 
     return (
-        <div className='wr'>
+        <div className="register-bg">
+            <div className='wr'>
             <div className="register-form">
                 <div className="type-btns">
-                    <button className='patient-type-btn' onClick={ e => clickOnType('patient') } >Patient</button>
+                    <button className='patient-type-btn' id='patient-type-btn' onClick={ e => clickOnType('patient') } >Patient</button>
                     <div>Or</div>
-                    <button className='doc-type-btn' onClick={ e => clickOnType('doc') } >Doctor</button>
+                    <button className='doc-type-btn' id='doc-type-btn' onClick={ e => clickOnType('doc') } >Doctor</button>
                 </div>
 
                 <form onSubmit={ e => submitHandler(e, registrationType) } >
@@ -93,6 +109,8 @@ export default function RegisterForm() {
                 </form>
             </div>
         </div>
+        </div>
+        
     )
 }
 

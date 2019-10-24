@@ -1,56 +1,103 @@
+.register-bg {
+    background: #ddd;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+
 .wr {
     width: 30vw;
-    height: 70vh;
+    height: 80vh;
     box-shadow: 0 0 5px #ddd;
     position: relative;
-    margin: 15vh auto;
+    margin: 10vh auto;
+    background: #3187F4;
+    border-radius: 5px;
     
-}
-
-.type-btns {
-    width: 100%;
-    height: 60px;
-    display: grid;
-    grid-template-columns: auto 60px auto;
-
-    div {
-        border: 1px solid #282828;
-        background: #fff;
-        border-radius: 90%;
-        text-align: center;
-        line-height: 55px;
-        font-size: 24px;
-        color: #000;
-        font-weight: 700;
-        position: relative;
-    }
-
-    button {
-        height: 50px;
-        border: none;
-        width: 110%;
-        align-self: center;
-        font-size: 22px;
-        cursor: pointer;
-    }
-
-    .doc-type-btn {
-        justify-self: right;
-        border-radius: 0 90px 90px 0;
-    }
-
-    .patient-type-btn {
-        border-radius: 90px 0 0 90px;
-    }
-}
-
-form {
-    #only-docs {
-        display: none;    
-    }
-
-    label {
+    .type-btns {
+        padding-top: 35px;
         width: 96%;
-        height: 50px;
+        position: relative;
+        margin: 50px 2% 0;
+        height: 60px;
+        display: grid;
+        grid-template-columns: auto 60px auto;
+    
+        div {
+            background:#F75B4A;
+            border-radius: 90%;
+            text-align: center;
+            line-height: 57px;
+            font-size: 24px;
+            color: #fff;
+            font-weight: 700;
+            position: relative;
+        }
+    
+        button {
+            height: 50px;
+            border: none;
+            width: 110%;
+            align-self: center;
+            font-size: 22px;
+            cursor: pointer;
+            background: #fff;
+        }
+    
+        .doc-type-btn {
+            justify-self: right;
+            border-radius: 0 90px 90px 0;
+        }
+    
+        .patient-type-btn {
+            border-radius: 90px 0 0 90px;
+            border: 3px solid #fff;
+            background: #4D9AFF;
+            color: #fff;
+        }
+    }
+    
+    form {
+        #only-docs {
+            display: none;    
+        }
+    
+        input {
+            margin: 10px 5%;
+            height: 40px;
+            width: 90%;
+            border: none;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: inset 0 0 5px #777;
+            text-indent: 15px;
+            font-size: 22px;
+        }
+    
+        label {
+            margin: 0 5%;
+            height: 50px;
+        }
+
+        button {
+            width: 200px;
+            height: 40px;
+            border: none;
+            background: #F75B4A;
+            border-radius: 20px;
+            color: #fff;
+            font-size: 22px;
+            position: relative;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
     }
 }
+
+
+
+
