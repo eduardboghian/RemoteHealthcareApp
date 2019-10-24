@@ -91,6 +91,7 @@
 .wr form button {
   width: 200px;
   height: 40px;
+  cursor: pointer;
   border: none;
   background: #F75B4A;
   border-radius: 20px;

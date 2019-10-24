@@ -100,7 +100,7 @@ export default function RegisterForm() {
                             <input type="text" value={practiceNumber} name='practiceNumber' onChange = { e => setPN(e.target.value) }/>
                         </label>
                         <label>
-                            National ID card numbert
+                            National ID card number
                             <input type="text" value={idCardNr} name='idCardNr' onChange = { e => setICN(e.target.value) } />
                         </label>
                     </div>

@@ -1,0 +1,97 @@
+.home-wr {
+  width: 100%;
+}
+
+.home-wr nav {
+  position: fixed;
+  z-index: 5;
+  top: 0;
+  width: 100%;
+  height: 40px;
+  background: #fff;
+  font-size: 20px;
+  display: -ms-grid;
+  display: grid;
+  padding: 10px 0 0;
+  -ms-grid-columns: auto auto auto;
+      grid-template-columns: auto auto auto;
+}
+
+.home-wr nav .logo {
+  padding: 0 0 0 50px;
+}
+
+.home-wr nav .nav-btns {
+  -ms-grid-column-align: center;
+      justify-self: center;
+}
+
+.home-wr nav .nav-btns li {
+  list-style: none;
+  display: inline-block;
+  margin: 0 50px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.home-wr nav .user-bar {
+  -ms-grid-column-align: right;
+      justify-self: right;
+  padding: 0 50px 0 0;
+}
+
+.home-wr .landing-board {
+  width: 100%;
+  margin-top: 50px;
+  height: 60vh;
+}
+
+.home-wr .landing-board .landing-bg {
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  height: 60vh;
+  opacity: .9;
+  background: #3187f4;
+}
+
+.home-wr .landing-board img {
+  width: 100%;
+  height: 60vh;
+  position: absolute;
+  z-index: -2;
+}
+
+.home-wr .landing-board p {
+  width: 50%;
+  position: relative;
+  left: 15%;
+  top: 74px;
+  font-size: 44px;
+  color: #f5f5f5;
+}
+
+.home-wr .landing-board button {
+  position: relative;
+  left: 15%;
+  top: 140px;
+  border: none;
+  width: 220px;
+  height: 50px;
+  color: #fff;
+  background: #F75B4A;
+  font-size: 22px;
+}
+
+.home-wr .doctors-wr {
+  width: 80%;
+  height: 1200px;
+  margin: 0 auto;
+}
+
+.home-wr .doctors-wr h1 {
+  font-weight: 400;
+  position: relative;
+  margin: 30px 6.5% 0;
+}
+/*# sourceMappingURL=Home.css.map */

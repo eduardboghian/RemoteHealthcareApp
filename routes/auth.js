@@ -9,7 +9,6 @@ router.get('/getthem', async (req, res)=> {
     res.send(docs)
 })
 
-
 router.post('/register/patient', async (req, res) => {
     const {error} = registerValidation(req.body)
     if (error) return res.status(400).send(error.details[0].message)
@@ -65,8 +64,8 @@ router.post('/login/patient', async (req, res) => {
     const validPass = await bcrypt.compare(req.body.password, user.password)
     if(!validPass) return res.status(400).send('Email or password is incorrect')
 
-    const token = jwt.sign({_id: user._id}, process.env.TOKEN_SECRET)
-    res.header('auth-token', token).send('logged in')
+    const token = jwt.sign({_id: user._id, name: user.name, email: user.email}, process.env.TOKEN_SECRET)
+    res.header('authToken', token).send('logged in')
 })
 
 router.post('/login/doctor', async (req, res)=> {
@@ -81,9 +80,15 @@ router.post('/login/doctor', async (req, res)=> {
 
     if(! doc.approved ) return res.status(400).send('Your account was not approved yet!')
 
-    const token = jwt.sign({_id: doc._id}, process.env.TOKEN_SECRET)
-    res.header('auth-token', token).send('logged in as doctor')
+    const token = jwt.sign({_id: doc._id, name: user.name, email: user.email}, process.env.TOKEN_SECRET)
+    res.header('authToken', token).send('logged in as doctor')
 
+})
+
+router.post('/getinfo', async (req, res)=> {
+    const token = req.body.token
+    const decoded = jwt.verify(token, process.env.TOKEN_SECRET)
+    res.send(decoded)
 })
 
 module.exports = router

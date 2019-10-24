@@ -42,7 +42,7 @@ export default function Login() {
                 email: email,
                 password: password
             })
-            .then(res=> console.log(res))
+            .then(res=> sessionStorage.setItem('authtoken', res.headers.authtoken))
             .catch(err => console.log(err))
         }else{
             axios.post('/api/user/login/doctor', {
