@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import '../css/LoginForm.css'
 import axios from 'axios'
 
-export default function Login() {
+export default function Login(props) {
     const [password, setPassword] = useState('')
     const [email, setEmail] = useState('')
     const [registrationType, setRT] = useState('patient')
@@ -34,22 +34,23 @@ export default function Login() {
         }       
     }
 
-    function handleSubmit(e) {
+    function handleSubmit(e, registrationType, props) {
         e.preventDefault()
         if(registrationType === 'patient' ){
-            console.log('boss')
             axios.post('/api/user/login/patient', {
                 email: email,
                 password: password
             })
             .then(res=> sessionStorage.setItem('authtoken', res.headers.authtoken))
+            .then(() => props.history.push('/home') )
             .catch(err => console.log(err))
         }else{
             axios.post('/api/user/login/doctor', {
                 email: email,
                 password: password
             })
-            .then(res=> console.log(res))
+            .then(res=> sessionStorage.setItem('authtoken', res.headers.authtoken))
+            .then(() => props.history.push('/home') )
             .catch(err => console.log(err))
         }
         
@@ -65,7 +66,7 @@ export default function Login() {
                     <button className='doc-type-btn' id='doc-type-btn' onClick={ e => clickOnType('doc') } >Doctor</button>
             </div>
             <div className="login-form">
-                <form onSubmit={ e=> handleSubmit(e) }>
+                <form onSubmit={ e=> handleSubmit(e, registrationType, props) }>
                     <label>
                         Email: <br />
                         <input type='email' name='email' value={email} onChange={ e => setEmail( e.target.value) } /> <br />
@@ -75,7 +76,7 @@ export default function Login() {
                         <input type="password"  name='password' value={password} onChange={ e => setPassword(e.target.value) } /> <br />
                     </label>
                     <div>
-                        <button type='submit'>Log In</button>
+                        <button type='submit'>Log In</button>    
                         <Link to='/register'>Register</Link>
                     </div>
                 </form>

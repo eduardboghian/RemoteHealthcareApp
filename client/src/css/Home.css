@@ -94,4 +94,36 @@
   position: relative;
   margin: 30px 6.5% 0;
 }
+
+.home-wr .doctors-wr .cards-wr {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto auto auto;
+      grid-template-columns: auto auto auto;
+}
+
+.home-wr .doctors-wr .cards-wr .doc-card {
+  margin: 30px 0;
+  width: 325px;
+  height: 500px;
+  -ms-grid-column-align: center;
+      justify-self: center;
+  background: #f5f5f5;
+  -webkit-box-shadow: 4px 4px 4px rgba(75, 75, 75, 0.25);
+          box-shadow: 4px 4px 4px rgba(75, 75, 75, 0.25);
+  display: inline-block;
+}
+
+.home-wr .doctors-wr .cards-wr .doc-card img {
+  width: 100%;
+  height: 250px;
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+.home-wr .doctors-wr .cards-wr .doc-card p {
+  font-size: 22px;
+  text-align: center;
+}
 /*# sourceMappingURL=Home.css.map */

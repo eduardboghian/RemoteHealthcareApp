@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import '../css/Home.css'
 import bg from '../media/bg2.jpg'
 import axios from 'axios'
+import dc from '../media/dc.jpg'
 
 export default function Home() {
     const [userdata, setUserdata] = useState({
@@ -48,6 +49,19 @@ export default function Home() {
                 <div className="doctors-wr">
                     <h1>Our Doctors:</h1>
                     <div className="cards-wr">
+                        <div className="doc-card">
+                            <img src={dc} alt=""/>
+                            <p className='doc-name'>Dr. Alexandru Ghiorghe</p>
+                        </div>
+                        <div className="doc-card">
+                            salut
+                        </div>
+                        <div className="doc-card">
+                            salut
+                        </div>
+                        <div className="doc-card">
+                            salut
+                        </div>
 
                     </div>
                 </div>

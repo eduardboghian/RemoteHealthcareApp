@@ -88,5 +88,33 @@
             position: relative;
             margin: 30px 6.5% 0 ; 
         }
+
+        .cards-wr {
+            display: grid;
+            grid-template-columns: auto auto auto;
+
+            .doc-card {
+                margin: 30px 0; 
+                width: 325px;
+                height: 500px;
+                justify-self: center;
+                background: #f5f5f5;
+                box-shadow: 4px 4px 4px rgba(75, 75, 75, 0.25  );
+                display: inline-block;
+
+                img {
+                    width: 100%;
+                    height: 250px;
+                    position: relative;
+                    top: 0;
+                    left: 0;
+                }
+
+                p {
+                    font-size: 22px;
+                    text-align: center;
+                }
+            }
+        }
     }
 }

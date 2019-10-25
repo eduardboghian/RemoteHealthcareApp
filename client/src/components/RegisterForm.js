@@ -3,7 +3,7 @@ import '../css/RegisterForm.css'
 import axios from  'axios'
 
 
-export default function RegisterForm() {
+export default function RegisterForm(props) {
     const [email, setEmail] = useState('')
     const [name, setName] = useState('')
     const [password, setPassword] = useState('')
@@ -41,14 +41,14 @@ export default function RegisterForm() {
     }
 
     function submitHandler(e, type) {
-        e.preventDefault()
+        e.preventDefault(props)
         if(type === 'patient') {
             axios.post('http://localhost:3001/api/user/register/patient', {
                 name: name,
                 email: email,
                 password: password
             })
-            .then(res => console.log(res))
+            .then(() => props.history.push('/') )
             .catch(error => {
                 console.log(error)
             })
@@ -60,7 +60,7 @@ export default function RegisterForm() {
                 practiceNumber: practiceNumber,
                 idCardNr: idCardNr
             })
-            .then(res => console.log(res))
+            .then(() => props.history.push('/') )
             .catch(error => {
                 console.log(error)
             })
@@ -78,7 +78,7 @@ export default function RegisterForm() {
                     <button className='doc-type-btn' id='doc-type-btn' onClick={ e => clickOnType('doc') } >Doctor</button>
                 </div>
 
-                <form onSubmit={ e => submitHandler(e, registrationType) } >
+                <form onSubmit={ e => submitHandler(e, registrationType, props) } >
                     <label>
                         Name:
                         <input type="text" value={name} name='name' onChange = { e => setName(e.target.value) } />
