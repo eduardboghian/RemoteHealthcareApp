@@ -43,7 +43,7 @@ export default function Home() {
 
                     <p>We are providing remote<br />Health Care Services</p>
 
-                    <button className='find-doc-btn'>Find Doctor</button>
+                    <button className='find-doc-btn'> Find Doctor</button>
                 </div>
 
                 <div className="doctors-wr">
@@ -52,6 +52,14 @@ export default function Home() {
                         <div className="doc-card">
                             <img src={dc} alt=""/>
                             <p className='doc-name'>Dr. Alexandru Ghiorghe</p>
+                            <p className="departament"> <span> Departament: </span>  Creier</p>
+                            <p className='degree'> <span>  Degree: </span> Hartie</p>
+                            <div className="contact-doc">
+                                <button className="more-info">More Info</button>
+                                <button className='text-doc'>Text</button>
+                                <button className="videocall-doc">Video</button>
+                            </div>
+                            <p>* * * * *</p>
                         </div>
                         <div className="doc-card">
                             salut

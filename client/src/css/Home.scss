@@ -35,6 +35,7 @@
         }
     }
 
+
     .landing-board {
         width: 100%;
         margin-top: 50px;
@@ -76,6 +77,8 @@
             background: #F75B4A;
             font-size: 22px;
         }
+
+        
     }
 
     .doctors-wr {
@@ -111,8 +114,34 @@
                 }
 
                 p {
-                    font-size: 22px;
+                    margin: 13px 0;
                     text-align: center;
+                    font-size: 18px;
+                }
+
+                span {
+                    color: #777
+                }
+
+                .doc-name {
+                    font-size: 22px;
+                }
+
+                .contact-doc {
+                    width: 80%;
+                    margin: 0 auto;
+                    display: grid;
+                    grid-template-columns: 33% 33% 33%;
+                        
+                    .more-info {
+                        justify-self: center;
+                        width: 70px;
+                        height: 40px;
+                        border: none;
+                        background-color: #3187f4;
+                        border-radius: 10px;
+                        color: #fff
+                    }
                 }
             }
         }
