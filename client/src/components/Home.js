@@ -65,7 +65,7 @@ export default function Home() {
                             salut
                         </div>
                         <div className="doc-card">
-                            salut
+                            salu
                         </div>
                         <div className="doc-card">
                             salut
