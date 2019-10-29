@@ -4,7 +4,7 @@ import bg from '../media/bg2.jpg'
 import axios from 'axios'
 import dc from '../media/dc.jpg'
 
-export default function Home() {
+export default function Home(props) {
     const [userdata, setUserdata] = useState({
         _id: '',
         name: '',
@@ -21,6 +21,10 @@ export default function Home() {
         })
         .catch(err => console.log(err)) 
     }, [])
+
+    function contactDoc(props) {
+        props.history.push(`/d/${userdata._id}`)
+    }
 
     return (
         <div >
@@ -43,7 +47,7 @@ export default function Home() {
 
                     <p>We are providing remote<br />Health Care Services</p>
 
-                    <button className='find-doc-btn'> Find Doctor</button>
+                    <button className='find-doc-btn' onClick={ e=> contactDoc(props) } > Contact Doctor</button>
                 </div>
 
                 <div className="doctors-wr">
