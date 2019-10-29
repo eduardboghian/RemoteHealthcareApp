@@ -80,7 +80,7 @@ router.post('/login/doctor', async (req, res)=> {
 
     if(! doc.approved ) return res.status(400).send('Your account was not approved yet!')
 
-    const token = jwt.sign({_id: doc._id, name: user.name, email: user.email}, process.env.TOKEN_SECRET)
+    const token = jwt.sign({_id: doc._id, name: doc.name, email: doc.email}, process.env.TOKEN_SECRET)
     res.header('authToken', token).send('logged in as doctor')
 
 })
