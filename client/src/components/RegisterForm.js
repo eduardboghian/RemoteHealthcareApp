@@ -43,7 +43,7 @@ export default function RegisterForm(props) {
     function submitHandler(e, type) {
         e.preventDefault(props)
         if(type === 'patient') {
-            axios.post('http://localhost:3001/api/user/register/patient', {
+            axios.post('/api/user/register/patient', {
                 name: name,
                 email: email,
                 password: password
@@ -53,7 +53,7 @@ export default function RegisterForm(props) {
                 console.log(error)
             })
         }else {
-            axios.post('http://localhost:3001/api/user/register/doctor', {
+            axios.post('/api/user/register/doctor', {
                 name: name,
                 email: email,
                 password: password,
