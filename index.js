@@ -7,6 +7,7 @@ const mongoose = require('mongoose')
 const express = require('express')
 const app = express()
 
+
 //IMPORT ROUTES
 
 const authRoute = require('./routes/auth')
@@ -16,7 +17,6 @@ app.use(express.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(cors())
-
 
 //Route Middlewere
 
@@ -35,4 +35,15 @@ if (process.env.NODE_ENV === "production") {
 }
 
 const PORT = process.env.PORT || 3001
-app.listen(PORT, console.log(`connected to port ${PORT}...`))
+const server = app.listen(PORT, console.log(`connected to port ${PORT}...`))
+
+// SOKET.IO
+const io = require('socket.io').listen(server)
+console.log('io connected...')
+
+io.on('connection', function(socket){
+  console.log('a user connected');
+  socket.on('disconnect', function(){
+    console.log('user disconnected');
+  })  
+})

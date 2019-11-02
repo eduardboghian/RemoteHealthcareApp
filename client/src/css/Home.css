@@ -8,7 +8,7 @@
   top: 0;
   width: 100%;
   height: 40px;
-  background: #fff;
+  background: #f2f2f2;
   font-size: 20px;
   display: -ms-grid;
   display: grid;
@@ -30,7 +30,7 @@
   list-style: none;
   display: inline-block;
   margin: 0 50px;
-  font-size: 20px;
+  font-size: 18px;
   cursor: pointer;
 }
 
@@ -146,6 +146,7 @@
 }
 
 .home-wr .doctors-wr .cards-wr .doc-card .contact-doc .more-info {
+  cursor: pointer;
   -ms-grid-column-align: center;
       justify-self: center;
   width: 70px;
@@ -154,5 +155,33 @@
   background-color: #3187f4;
   border-radius: 10px;
   color: #fff;
+}
+
+.home-wr .doctors-wr .cards-wr .doc-card .contact-doc .text-doc {
+  cursor: pointer;
+  width: 70px;
+  height: 40px;
+  border: none;
+  background-color: inherit;
+  padding: 0;
+}
+
+.home-wr .doctors-wr .cards-wr .doc-card .contact-doc .text-doc img {
+  width: 100%;
+  height: 96%;
+}
+
+.home-wr .doctors-wr .cards-wr .doc-card .contact-doc .videocall-doc {
+  cursor: pointer;
+  width: 70px;
+  height: 40px;
+  border: none;
+  background-color: inherit;
+  padding: 0;
+}
+
+.home-wr .doctors-wr .cards-wr .doc-card .contact-doc .videocall-doc img {
+  width: 100%;
+  height: 100%;
 }
 /*# sourceMappingURL=Home.css.map */

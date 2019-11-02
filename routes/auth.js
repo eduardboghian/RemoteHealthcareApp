@@ -3,8 +3,7 @@ const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const { User, Doctor, registerValidation, loginValidation, docRegisterValidation } = require('../models/user')
 
-router.get('/getthem', async (req, res)=> {
-    const users = await User.find()
+router.get('/getdoctors', async (req, res)=> {
     const docs = await Doctor.find()
     res.send(docs)
 })

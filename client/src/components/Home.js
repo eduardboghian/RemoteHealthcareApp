@@ -3,6 +3,8 @@ import '../css/Home.css'
 import bg from '../media/bg2.jpg'
 import axios from 'axios'
 import dc from '../media/dc.jpg'
+import textIcon from '../media/1.5x/text-icon@1.5x.png'
+import videoIcon from '../media/video.png'
 
 export default function Home(props) {
     const [userdata, setUserdata] = useState({
@@ -24,6 +26,10 @@ export default function Home(props) {
 
     function contactDoc(props) {
         props.history.push(`/d/${userdata._id}`)
+    }
+
+    function textDoc(docId) {
+
     }
 
     return (
@@ -60,8 +66,8 @@ export default function Home(props) {
                             <p className='degree'> <span>  Degree: </span> Hartie</p>
                             <div className="contact-doc">
                                 <button className="more-info">More Info</button>
-                                <button className='text-doc'>Text</button>
-                                <button className="videocall-doc">Video</button>
+                                <button className='text-doc' onClick={ e => textDoc('5db7faf86ea78434fc897841') } > <img src={textIcon} alt=""/> </button>
+                                <button className="videocall-doc"> <img src={videoIcon} alt=""/> </button>
                             </div>
                             <p>* * * * *</p>
                         </div>

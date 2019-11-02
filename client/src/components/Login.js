@@ -8,6 +8,13 @@ export default function Login(props) {
     const [email, setEmail] = useState('')
     const [registrationType, setRT] = useState('patient')
 
+    // useEffect(() => {
+    //     if(sessionStorage.getItem('authtoken')) {
+    //         props.history.push('/home')
+    //         console.log(props)
+    //     }
+    // }, [])
+
     function clickOnType(type) {
         if(type === 'doc') {
             setRT('doc')
@@ -34,6 +41,8 @@ export default function Login(props) {
         }       
     }
 
+    
+
     function handleSubmit(e, registrationType, props) {
         e.preventDefault()
         if(registrationType === 'patient' ){
@@ -50,7 +59,7 @@ export default function Login(props) {
                 password: password
             })
             .then(res=> sessionStorage.setItem('authtoken', res.headers.authtoken))
-            .then(() => props.history.push('/home') )
+            .then(() => props.history.push(`/d/1`) )
             .catch(err => console.log(err))
         }
         
