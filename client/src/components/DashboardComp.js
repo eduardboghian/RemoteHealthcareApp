@@ -101,7 +101,7 @@ export default function Dashboard(location) {
                         className='message' 
                         onKeyPress={event => event.key === 'Enter' ? sendMessage(event) : null}
                     />
-                    <button onClick={ e => sendMessage(e) } onTouchStart={  e => sendMessage(e) }>Send</button>
+                    <button onClick={ e => sendMessage(e) }>Send</button>
                 </div>
             </div>
         </div>
