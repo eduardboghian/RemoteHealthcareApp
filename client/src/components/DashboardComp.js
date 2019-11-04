@@ -16,7 +16,7 @@ export default function Dashboard(location) {
     })
     const [messages, setMessages] = useState([])
     const [message, setMessage] = useState('')
-    const ENDPOINT = 'http://localhost:3001'
+    const ENDPOINT = ':3000'
 
     useEffect(() => {
         axios.post('/api/user/getinfo', {
@@ -72,7 +72,7 @@ export default function Dashboard(location) {
         event.preventDefault()
 
         if(message) {
-            socket.emit('sendMessage', message, () => setMessage(''))
+            socket.emit('sendMessage', message, userdata.name,() => setMessage(''))
         }
     }
 

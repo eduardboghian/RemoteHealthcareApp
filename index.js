@@ -39,9 +39,9 @@ io.on('connection', (socket) => {
   socket.on('', ({ name }, callback) => {
   })
 
-  socket.on('sendMessage', async (message) => {
+  socket.on('sendMessage', async (message, name) => {
     let msg = new Messages({
-      name: 'edi',
+      name: name,
       message: message
     })
     msg = await msg.save()
