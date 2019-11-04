@@ -31,6 +31,8 @@ export default function Dashboard(location) {
         .then( async (res) => { 
             res.data.map((msg)=>{
                 setMessages( (messages)=> ([...messages, msg]) )
+
+                return 0
             })  
         })
         .catch(err => console.log(err))   
@@ -58,6 +60,8 @@ export default function Dashboard(location) {
             message.textContent = data.name+': '+data.message
             
             messages.appendChild(message)
+            
+            return 0
         })
 
         return () => {
@@ -72,7 +76,7 @@ export default function Dashboard(location) {
         event.preventDefault()
 
         if(message) {
-            socket.emit('sendMessage', message, userdata.name,() => setMessage(''))
+            socket.emit('sendMessage', message, userdata.name,() => setMessage(' '))
         }
     }
 
@@ -92,16 +96,19 @@ export default function Dashboard(location) {
                     <div className="chat-screen" id='messages'>
                         
                     </div>
-                    <input 
-                        type="text" 
-                        name='message' 
-                        value={message} 
-                        onChange={ e => setMessage(e.target.value) } 
-                        placeholder='Type here...' 
-                        className='message' 
-                        onKeyPress={event => event.key === 'Enter' ? sendMessage(event) : null}
-                    />
-                    <button onClick={ e => sendMessage(e) }>Send</button>
+                    <div className='chat-screen-form'>
+                        <input 
+                            type="text" 
+                            name='message' 
+                            value={message} 
+                            onChange={ e => setMessage(e.target.value) } 
+                            placeholder='Type here...' 
+                            className='message' 
+                            onKeyPress={event => event.key === 'Enter' ? sendMessage(event) : null}
+                        />
+                        <button onClick={ e => sendMessage(e) }>Send</button>
+                    </div>
+                    
                 </div>
             </div>
         </div>
