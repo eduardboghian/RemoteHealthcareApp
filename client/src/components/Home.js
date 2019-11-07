@@ -25,7 +25,7 @@ export default function Home(props) {
 
     function contactDoc(docId) {
         let patientId = userdata._id
-        props.history.push(`/dashboard/${docId}/${patientId}`)
+        props.history.push(`/dashboard/${docId}/${patientId}/${userdata.name}`)
     }
 
     return (

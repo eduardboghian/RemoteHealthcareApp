@@ -6,6 +6,8 @@ import vcall from '../media/video.png'
 import io from 'socket.io-client'
 import Messages from './Messages/Messages'
 import Input from './Input/Input'
+import InfoBar from './InfoBar/InfoBar'
+import TextContainer from './TextContainer/TextContainer'
 
 let socket
 
@@ -20,7 +22,7 @@ export default function Dashboard(props, location) {
     const [messages, setMessages] = useState([])
     const [doctor, setDoctor] = useState([])
     const [sroom, setRoom] = useState([])
-    const [users, setUsers] = useState('')
+    const [users, setUsers] = useState([])
     const [username, setUsername] = useState('')
     const ENDPOINT = ':3000'
 
@@ -44,43 +46,40 @@ export default function Dashboard(props, location) {
     }, [])
 
     useEffect(() => {
-        const room = props.match.params.did+props.match.params.pid
-        let name = userdata.name
-        setUsername(name)
-
+        let name = props.match.params.name
+        let room = props.match.params.did+props.match.params.pid
+    
         socket = io(ENDPOINT);
     
-        setRoom(room)
-
-        console.log( 'NAME:', name)
-        if(name && room) {
-            console.log(name)
-            socket.emit('join', { name, room }, (error) => {
-                if(error) {
-                  alert(error)
-                }
-            })
-        }
-        
-    }, [ENDPOINT, location.search, userdata])
+        setRoom(room);
+        setUsername(name)
+    
+        socket.emit('join', { name, room }, (error) => {
+          if(error) {
+            alert(error);
+          }
+        });
+    
+        setUsers([{name:'edi'}])
+      }, [ENDPOINT, location.search])
 
     useEffect(() => {
         socket.on('message', (message) => {
-            console.log('tesst msg')
-          setMessages((messages)=> ([...messages, message])) 
-        })
-
+          console.log(message)
+          setMessages([...messages, message ]);
+        });
+    
         socket.on('roomData', ({ users }) => {
-          setUsers(users)
+            console.log(users)
+          setUsers(users);
         })
-
+    
         return () => {
-            socket.emit('disconnect')
-      
-            socket.off()
+          socket.emit('disconnect');
+    
+          socket.off();
         }
-        
-    }, [messages])
+      }, [messages])
     
     const sendMessage = (event) => {
         event.preventDefault();
@@ -101,9 +100,12 @@ export default function Dashboard(props, location) {
                 
                 <div className="contact-list">
                     edi <br/>dani
+                   
                 </div>
                 <div className="chat-wr">
                     <div className="chat-screen" id='messages'>
+                        <InfoBar room={sroom} />
+                        <TextContainer users={users}/>
                         <Messages messages={messages} name={username} />
                     </div>
                     <div className='chat-screen-form'>
