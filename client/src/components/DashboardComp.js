@@ -4,21 +4,29 @@ import axios from 'axios'
 import '../css/DashboardComp.css'
 import vcall from '../media/video.png'
 import io from 'socket.io-client'
+import Messages from './Messages/Messages'
+import Input from './Input/Input'
 
 let socket
 
 
-export default function Dashboard(location) {
+export default function Dashboard(props, location) {
     const [userdata, setUserdata] = useState({
         _id: '',
         name: '',
         email: ''
     })
-    const [messages, setMessages] = useState([])
     const [message, setMessage] = useState('')
+    const [messages, setMessages] = useState([])
+    const [doctor, setDoctor] = useState([])
+    const [sroom, setRoom] = useState([])
+    const [users, setUsers] = useState('')
+    const [username, setUsername] = useState('')
     const ENDPOINT = ':3000'
 
-    useEffect(() => {
+    useEffect(() => { 
+        // GET USER INFO FROM DB
+
         axios.post('/api/user/getinfo', {
             token: sessionStorage.getItem('authtoken')
         })
@@ -27,56 +35,58 @@ export default function Dashboard(location) {
         })
         .catch(err => console.log(err)) 
 
-        axios.get('/api/chat/messages')
-        .then( async (res) => { 
-            res.data.map((msg)=>{
-                setMessages( (messages)=> ([...messages, msg]) )
+        // GET DOCTOR INFO FROM DB
 
-                return 0
-            })  
-        })
-        .catch(err => console.log(err))   
+        axios.get(`/api/user/getdoctor/${props.match.params.did}`)
+        .then(res => setDoctor(res.data))
+        .catch(err => console.log(err))
         
     }, [])
 
     useEffect(() => {
-        socket = io.connect(ENDPOINT) 
+        const room = props.match.params.did+props.match.params.pid
+        let name = userdata.name
+        setUsername(name)
 
-    }, [ENDPOINT, location.search]);
+        socket = io(ENDPOINT);
+    
+        setRoom(room)
+
+        console.log( 'NAME:', name)
+        if(name && room) {
+            console.log(name)
+            socket.emit('join', { name, room }, (error) => {
+                if(error) {
+                  alert(error)
+                }
+            })
+        }
+        
+    }, [ENDPOINT, location.search, userdata])
 
     useEffect(() => {
-        let msgs = document.getElementById('messages')
-        msgs.innerHTML = ''
-
-        socket.on('message', (msg) => {
-            setMessages((messages)=> ([...messages, msg])) 
+        socket.on('message', (message) => {
+            console.log('tesst msg')
+          setMessages((messages)=> ([...messages, message])) 
         })
 
-        messages.map((data)=> {
-            let messages = document.getElementById('messages')
-
-            let message = document.createElement('div')
-            message.setAttribute('class', 'chat-message')
-            message.textContent = data.name+': '+data.message
-            
-            messages.appendChild(message)
-            
-            return 0
+        socket.on('roomData', ({ users }) => {
+          setUsers(users)
         })
 
         return () => {
-            socket.emit('disconnect');
+            socket.emit('disconnect')
       
-            socket.off();
-          }
-
+            socket.off()
+        }
+        
     }, [messages])
-
+    
     const sendMessage = (event) => {
-        event.preventDefault()
+        event.preventDefault();
 
         if(message) {
-            socket.emit('sendMessage', message, userdata.name,() => setMessage(' '))
+            socket.emit('sendMessage', message, () => setMessage(''));
         }
     }
 
@@ -85,7 +95,7 @@ export default function Dashboard(location) {
             <div className="dasboard">
                 <Link to='/home' className="back-home">Go Back Home</Link>
                 <div className="top-bar">
-                    <p>{userdata.name}</p>
+                    <p>{doctor.map(data=>data.name)}</p>
                     <div className="videocall"><img src={vcall} alt=""/></div>
                 </div>
                 
@@ -94,10 +104,10 @@ export default function Dashboard(location) {
                 </div>
                 <div className="chat-wr">
                     <div className="chat-screen" id='messages'>
-                        
+                        <Messages messages={messages} name={username} />
                     </div>
                     <div className='chat-screen-form'>
-                        <input 
+                        {/* <input 
                             type="text" 
                             name='message' 
                             value={message} 
@@ -106,7 +116,8 @@ export default function Dashboard(location) {
                             className='message' 
                             onKeyPress={event => event.key === 'Enter' ? sendMessage(event) : null}
                         />
-                        <button onClick={ e => sendMessage(e) }>Send</button>
+                        <button onClick={ e => sendMessage(e) }>Send</button> */}
+                        <Input message={message} setMessage={setMessage} sendMessage={sendMessage} />
                     </div>
                     
                 </div>

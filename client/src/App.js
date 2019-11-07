@@ -11,7 +11,7 @@ function App() {
       <Route path='/register' component={ RegisterForm } />
       <Route exact path='/' component={Login} />
       <Route path='/home' component={Home} />
-      <Route path="/d/:id" component={Dashboard} />
+      <Route path="/dashboard/:did/:pid" component={Dashboard} />
     </div>
   )
 }

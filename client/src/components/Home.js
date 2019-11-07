@@ -19,17 +19,13 @@ export default function Home(props) {
         })
         .then(res=> {
             setUserdata({ _id: res.data._id, name: res.data.name, email: res.data.email })
-            console.log(res)
         })
         .catch(err => console.log(err)) 
     }, [])
 
-    function contactDoc(props) {
-        props.history.push(`/d/${userdata._id}`)
-    }
-
-    function textDoc(docId) {
-
+    function contactDoc(docId) {
+        let patientId = userdata._id
+        props.history.push(`/dashboard/${docId}/${patientId}`)
     }
 
     return (
@@ -66,7 +62,7 @@ export default function Home(props) {
                             <p className='degree'> <span>  Degree: </span> Hartie</p>
                             <div className="contact-doc">
                                 <button className="more-info">More Info</button>
-                                <button className='text-doc' onClick={ e => textDoc('5db7faf86ea78434fc897841') } > <img src={textIcon} alt=""/> </button>
+                                <button className='text-doc' onClick={ e=> contactDoc('5db7faf86ea78434fc897841')}> <img src={textIcon} alt=""/> </button>
                                 <button className="videocall-doc"> <img src={videoIcon} alt=""/> </button>
                             </div>
                             <p>* * * * *</p>
