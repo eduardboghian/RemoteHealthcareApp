@@ -7,7 +7,7 @@ export default function ContactList({contactList}) {
     useEffect(() => {
         contactList.map((data, i) =>{
             axios.get(`/api/user/getdoctor/${data}`)
-            .then(res => console.log(res))
+            .then(res => setContacts([res]))
             .catch(err => console.log(err))
             })
         
@@ -15,11 +15,13 @@ export default function ContactList({contactList}) {
     
     return (
         <div>
-            {contactList.map((data, i) =>{
+            {/* {contactList.map((data, i) =>{
             axios.get(`/api/user/getdoctor/${data}`)
             .then(res => <div className='contacts'>{res}</div> )
             .catch(err => console.log(err))
-            })}
+            })} */}
+
+            { console.log(contacts) }
         </div>
     )
 }
