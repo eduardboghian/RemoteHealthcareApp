@@ -96,7 +96,7 @@ export default function Dashboard(props, location) {
     return (
         <div>
             <div className="dasboard">
-                <Link to='/home' className="back-home">Go Back Home</Link>
+                <Link to='/' className="back-home">Go Back Home</Link>
                 <div className="top-bar">
                     <p>{doctor.map(data=>data.name)}</p>
                     <div className="videocall"><img src={vcall} alt=""/></div>

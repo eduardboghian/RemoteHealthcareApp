@@ -48,7 +48,7 @@ export default function RegisterForm(props) {
                 email: email,
                 password: password
             })
-            .then(() => props.history.push('/') )
+            .then(() => props.history.push('/login') )
             .catch(error => {
                 console.log(error)
             })
@@ -60,7 +60,7 @@ export default function RegisterForm(props) {
                 practiceNumber: practiceNumber,
                 idCardNr: idCardNr
             })
-            .then(() => props.history.push('/') )
+            .then(() => props.history.push('/login') )
             .catch(error => {
                 console.log(error)
             })
