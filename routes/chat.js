@@ -24,6 +24,18 @@ router.post('/create-room/:docId/:patientId', async (req, res)=>{
     res.send(room)
 })
 
+router.put('/add-contact/:id/:pid', async (req, res)=> {
+    const contact = await User.find({contactList: req.params.id})
+    let contactList
+    console.log(contact, "nr:", contact.length)
+    if(contact.length<1) {
+        contactList = await User.findOneAndUpdate({_id: req.params.pid}, {$push: {contactList: req.params.id}},{ new: true }) 
+        res.send(contactList)   
+    }
+    
+    res.send(contact)
+})
+
 router.delete('/messages', async (req, res)=> {
     const msgs = await Messages.deleteMany()
     res.send(msgs)

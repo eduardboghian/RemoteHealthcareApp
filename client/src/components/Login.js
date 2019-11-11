@@ -51,7 +51,7 @@ export default function Login(props) {
                 password: password
             })
             .then(res=> sessionStorage.setItem('authtoken', res.headers.authtoken))
-            .then(() => props.history.push('/home') )
+            .then(() => props.history.push('/') )
             .catch(err => console.log(err))
         }else{
             axios.post('/api/user/login/doctor', {

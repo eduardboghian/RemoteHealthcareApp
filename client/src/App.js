@@ -9,8 +9,8 @@ function App() {
   return (
     <div className="App">
       <Route path='/register' component={ RegisterForm } />
-      <Route exact path='/' component={Login} />
-      <Route path='/home' component={Home} />
+      <Route exact path='/' component={Home} />
+      <Route path='/login' component={Login} />
       <Route path="/dashboard/:did/:pid/:name" component={Dashboard} />
     </div>
   )

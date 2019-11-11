@@ -23,7 +23,8 @@ router.post('/register/patient', async (req, res) => {
         name: req.body.name,
         email: req.body.email,
         password: hashedPass,
-        type: 'patient'
+        type: 'patient',
+        contactList: []  
     })
     user = await user.save()
 
@@ -47,7 +48,8 @@ router.post('/register/doctor', async (req, res) => {
         practiceNumber: req.body.practiceNumber,
         idCardNr: req.body.idCardNr,
         type: 'doctor',
-        approved: false    
+        approved: false,
+        contactList: []    
     })
     doc = await doc.save()
 
@@ -64,7 +66,7 @@ router.post('/login/patient', async (req, res) => {
     const validPass = await bcrypt.compare(req.body.password, user.password)
     if(!validPass) return res.status(400).send('Email or password is incorrect')
 
-    const token = jwt.sign({_id: user._id, name: user.name, email: user.email}, process.env.TOKEN_SECRET)
+    const token = jwt.sign({_id: user._id, name: user.name, email: user.email, contactList: user.contactList}, process.env.TOKEN_SECRET)
     res.header('authToken', token).send('logged in')
 })
 
@@ -80,7 +82,7 @@ router.post('/login/doctor', async (req, res)=> {
 
     if(! doc.approved ) return res.status(400).send('Your account was not approved yet!')
 
-    const token = jwt.sign({_id: doc._id, name: doc.name, email: doc.email}, process.env.TOKEN_SECRET)
+    const token = jwt.sign({_id: doc._id, name: doc.name, email: doc.email, contactList: user.contactList}, process.env.TOKEN_SECRET)
     res.header('authToken', token).send('logged in as doctor')
 
 })

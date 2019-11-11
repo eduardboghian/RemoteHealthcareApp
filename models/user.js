@@ -16,6 +16,9 @@ const userSchema = new mongooose.Schema({
     },
     type: {
         type: String
+    },
+    contactList: {
+        type: Array
     } 
 })
 
@@ -45,8 +48,10 @@ const docSchema = new mongooose.Schema({
     },
     approved: {
         type: Boolean
-    } 
-
+    },
+    contactList: {
+        type: Array
+    }  
 })
 
 

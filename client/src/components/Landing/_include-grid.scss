@@ -1,0 +1,119 @@
+.is_1 {
+    flex: 0 0 8.3333%;
+    max-width: 8.3333%;
+}
+
+.is_2 {
+    flex: 0 0 16.6667%;
+    max-width: 16.6667%;
+}
+
+.is_3 {
+    flex: 0 0 25%;
+    max-width: 25%;
+}
+
+.is_4 {
+    flex: 0 0 33.3333%;
+    max-width: 33.3333%;
+}
+
+.is_5 {
+    flex: 0 0 41.6667%;
+    max-width: 41.6667%;
+}
+
+.is_6 {
+    flex: 0 0 50%;
+    max-width: 50%;
+}
+
+.is_7 {
+    flex: 0 0 58.3333%;
+    max-width: 58.3333%;
+}
+
+.is_8 {
+    flex: 0 0 66.6667%;
+    max-width: 66.6667%;
+}
+
+.is_9 {
+    flex: 0 0 75%;
+    max-width: 75%;
+}
+
+.is_10 {
+    flex: 0 0 83.3333%;
+    max-width: 83.3333%;
+}
+
+.is_11 {
+    flex: 0 0 91.6667%;
+    max-width: 91.6667%;
+}
+
+.is_12 {
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+
+
+.row {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+.parallax {
+
+    // background-image: url();
+    height: auto;
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.container {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+@media (min-width: 576px) {
+    .container {
+        max-width: 540px;
+    }
+}
+
+@media (min-width: 768px) {
+    .container {
+        max-width: 720px;
+    }
+}
+
+@media (min-width: 992px) {
+    .container {
+        max-width: 960px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1140px;
+    }
+}
+
+.container-fluid {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}

@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import '../css/Home.css'
-import bg from '../media/bg2.jpg'
+import { Link } from 'react-router-dom'
 import axios from 'axios'
 import dc from '../media/dc.jpg'
 import textIcon from '../media/1.5x/text-icon@1.5x.png'
 import videoIcon from '../media/video.png'
+import Landing from '../components/Landing/landing'
+import Footer from '../components/Footer/Footer'
 
 export default function Home(props) {
     const [userdata, setUserdata] = useState({
@@ -39,17 +41,14 @@ export default function Home(props) {
                         <li>FAQ</li>
                     </div>
                     <div className="user-bar">
+                        
+                        <div className={ userdata.name ? 'display-none' : 'auth-bar' }> <Link className='login-btn' to='/login' >Login</ Link> <Link to='/register' >Sign Up</Link> </div>
                         {userdata.name}
                     </div>
                     
                 </nav>
                 <div className="landing-board">
-                    <div className='landing-bg'></div>
-                    <img src={bg} alt=""/>
-
-                    <p>We are providing remote<br />Health Care Services</p>
-
-                    <button className='find-doc-btn' onClick={ e=> contactDoc(props) } > Contact Doctor</button>
+                    <Landing />
                 </div>
 
                 <div className="doctors-wr">
@@ -63,6 +62,7 @@ export default function Home(props) {
                             <div className="contact-doc">
                                 <button className="more-info">More Info</button>
                                 <button className='text-doc' onClick={ e=> contactDoc('5db7faf86ea78434fc897841')}> <img src={textIcon} alt=""/> </button>
+                                <button className='text-doc' onClick={ e=> contactDoc('5db83e23ebc2113fc4bf0942')}> <img src={textIcon} alt=""/> </button>
                                 <button className="videocall-doc"> <img src={videoIcon} alt=""/> </button>
                             </div>
                             <p>* * * * *</p>
@@ -80,6 +80,7 @@ export default function Home(props) {
                     </div>
                 </div>
 
+                <Footer />
             </div>
         </div>
     )

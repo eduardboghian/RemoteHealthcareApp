@@ -1,0 +1,102 @@
+@import '../Landing/include-media';
+@import '../Landing/include-grid';
+
+.Bottom {
+    display: flex;
+    background-color: rgba(128, 99, 255, 0.5);
+    position: relative;
+    min-height: 400px;
+    margin-bottom: 0;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 80%;
+    margin: 0 auto;
+
+    @include media ("<tablet") {
+        width: 100%;
+    }
+
+}
+
+.firstFooterBox {
+    display: flex;
+    justify-content: center;
+    margin: 0 10px;
+
+    @include media ("<tablet") {
+        flex-wrap: wrap;
+        margin: 20px 20px;
+    }
+
+    a {
+        padding: 50px;
+        text-decoration: none;
+
+        @include media ("<tablet") {
+            padding: 10px;
+        }
+
+        @include media ("<tablet") {
+            padding: 10px;
+        }
+
+        @include media ("<tablet") {
+            margin: 20px 20px;
+        }
+    }
+
+}
+
+.secondFooterBox {
+    display: flex;
+    flex-direction: column-reverse;
+
+    @include media ("<tablet") {
+        margin-top: 0;
+        margin-bottom: 20px;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    div {
+        display: flex;
+        justify-content: center;
+
+        @include media ("<tablet") {
+            margin: 20px 0;
+            text-align: center;
+        }
+    }
+
+    ul {
+        display: flex;
+        justify-content: center;
+        margin: 10px 0;
+
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+        @include media ("<tablet") {
+            flex-direction: column;
+        }
+
+        li {
+            list-style: none;
+
+            margin-left: 20px;
+
+            @include media ("<tablet") {
+                margin-bottom: 10px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+        }
+    }
+
+    @include media ("<tablet") {
+        flex-wrap: wrap-reverse;
+    }
+}

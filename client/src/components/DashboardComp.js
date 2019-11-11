@@ -8,6 +8,7 @@ import Messages from './Messages/Messages'
 import Input from './Input/Input'
 import InfoBar from './InfoBar/InfoBar'
 import TextContainer from './TextContainer/TextContainer'
+import ContactList from './ContactList'
 
 let socket
 
@@ -16,12 +17,13 @@ export default function Dashboard(props, location) {
     const [userdata, setUserdata] = useState({
         _id: '',
         name: '',
-        email: ''
+        email: '',
+        contacts: [ ]
     })
     const [message, setMessage] = useState('')
     const [messages, setMessages] = useState([])
     const [doctor, setDoctor] = useState([])
-    const [sroom, setRoom] = useState([])
+    const [rooms, setRoom] = useState('')
     const [users, setUsers] = useState([])
     const [username, setUsername] = useState('')
     const ENDPOINT = ':3000'
@@ -33,7 +35,7 @@ export default function Dashboard(props, location) {
             token: sessionStorage.getItem('authtoken')
         })
         .then(res=> {
-            setUserdata({ _id: res.data._id, name: res.data.name, email: res.data.email })
+            setUserdata({ _id: res.data._id, name: res.data.name, email: res.data.email, contacts: res.data.contactList })
         })
         .catch(err => console.log(err)) 
 
@@ -41,6 +43,11 @@ export default function Dashboard(props, location) {
 
         axios.get(`/api/user/getdoctor/${props.match.params.did}`)
         .then(res => setDoctor(res.data))
+        .catch(err => console.log(err))
+
+        axios.put(`/api/chat/add-contact/${props.match.params.did}/5db09e5e26d653340c473b11`)
+        .then(res => {setUserdata({ _id: res.data[0]._id, name: res.data[0].name, email: res.data[0].email, contacts: res.data[0].contactList })
+        })
         .catch(err => console.log(err))
         
     }, [])
@@ -51,7 +58,7 @@ export default function Dashboard(props, location) {
     
         socket = io(ENDPOINT);
     
-        setRoom(room);
+        setRoom(room)
         setUsername(name)
     
         socket.emit('join', { name, room }, (error) => {
@@ -60,18 +67,15 @@ export default function Dashboard(props, location) {
           }
         });
     
-        setUsers([{name:'edi'}])
       }, [ENDPOINT, location.search])
 
     useEffect(() => {
         socket.on('message', (message) => {
-          console.log(message)
-          setMessages([...messages, message ]);
+          setMessages([...messages, message ])
         });
     
         socket.on('roomData', ({ users }) => {
-            console.log(users)
-          setUsers(users);
+          setUsers(users)
         })
     
         return () => {
@@ -100,25 +104,15 @@ export default function Dashboard(props, location) {
                 
                 <div className="contact-list">
                     edi <br/>dani
-                   
+                    <ContactList contactList={userdata.contacts} />
                 </div>
                 <div className="chat-wr">
                     <div className="chat-screen" id='messages'>
-                        <InfoBar room={sroom} />
+                        <InfoBar room={rooms} />
                         <TextContainer users={users}/>
                         <Messages messages={messages} name={username} />
                     </div>
                     <div className='chat-screen-form'>
-                        {/* <input 
-                            type="text" 
-                            name='message' 
-                            value={message} 
-                            onChange={ e => setMessage(e.target.value) } 
-                            placeholder='Type here...' 
-                            className='message' 
-                            onKeyPress={event => event.key === 'Enter' ? sendMessage(event) : null}
-                        />
-                        <button onClick={ e => sendMessage(e) }>Send</button> */}
                         <Input message={message} setMessage={setMessage} sendMessage={sendMessage} />
                     </div>
                     
