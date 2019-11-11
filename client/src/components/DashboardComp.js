@@ -26,7 +26,7 @@ export default function Dashboard(props, location) {
     const [rooms, setRoom] = useState('')
     const [users, setUsers] = useState([])
     const [username, setUsername] = useState('')
-    const ENDPOINT = ':3000'
+    const ENDPOINT = ':'
 
     useEffect(() => { 
         // GET USER INFO FROM DB
