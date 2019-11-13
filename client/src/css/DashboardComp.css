@@ -51,6 +51,11 @@
   height: calc(100vh - 55px);
 }
 
+.contact-list .contacts {
+  margin: 10px;
+  cursor: pointer;
+}
+
 .chat-wr {
   background: #f2f2f2;
   width: 100%;

@@ -9,6 +9,11 @@ router.get('/getdoctor/:id', async (req, res)=> {
     res.send(doc)
 })
 
+router.get('/getdoctors', async (req, res)=> {
+    const doc = await Doctor.find()
+    res.send(doc)
+})
+
 router.post('/register/patient', async (req, res) => {
     const {error} = registerValidation(req.body)
     if (error) return res.status(400).send(error.details[0].message)

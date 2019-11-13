@@ -103,8 +103,7 @@ export default function Dashboard(props, location) {
                 </div>
                 
                 <div className="contact-list">
-                    edi <br/>dani
-                    <ContactList contactList={userdata.contacts} />
+                    <ContactList props={props} contactList={userdata.contacts} />
                 </div>
                 <div className="chat-wr">
                     <div className="chat-screen" id='messages'>
