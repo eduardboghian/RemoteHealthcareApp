@@ -3,6 +3,7 @@ const bodyParser =require('body-parser')
 const path = require('path')
 const dotenv = require('dotenv')
 const cors = require('cors')
+const axios = require('axios')
 const mongoose = require('mongoose')
 const express = require('express')
 const app = express()
@@ -48,17 +49,23 @@ io.on('connect', (socket) => {
 
     socket.join(user.room)
 
-    socket.broadcast.to(user.room).emit('message', { user: 'admin', text: `${user.name} has joined!` })
-
     io.to(user.room).emit('roomData', { room: user.room, users: getUsersInRoom(user.room) })
 
     callback()
   })
 
-  socket.on('sendMessage', (message, callback) => {
+  socket.on('sendMessage', async (message, callback) => {
     const user = getUser(socket.id)
 
-    
+    const room = user.room
+    const docId = room.slice(0, room.length/2)
+    const patientId = room.slice(room.length/2, room.length)
+    const msg = { user: user.name, text: message }
+
+    let newMsg = await Room.findOneAndUpdate({ docId: docId, patientId: patientId },
+      { $push: { messages: msg }},
+      { new: true }
+    )
 
     io.to(user.room).emit('message', { user: user.name, text: message })
 

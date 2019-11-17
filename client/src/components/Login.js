@@ -58,8 +58,10 @@ export default function Login(props) {
                 email: email,
                 password: password
             })
-            .then(res=> sessionStorage.setItem('authtoken', res.headers.authtoken))
-            .then(() => props.history.push(`/dashboard/5db7faf86ea78434fc897841/5db09e5e26d653340c473b11/edidoctor`) )
+            .then((res) => {
+                sessionStorage.setItem('authtoken', res.headers.authtoken)
+                props.history.push(`/dashboard/${res.data._id}/z/${res.data.name}`)
+            })
             .catch(err => console.log(err))
         }
         

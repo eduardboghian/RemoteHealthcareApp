@@ -35,21 +35,36 @@ export default function Dashboard(props, location) {
             token: sessionStorage.getItem('authtoken')
         })
         .then(res=> {
+            console.log('res:', res)
             setUserdata({ _id: res.data._id, name: res.data.name, email: res.data.email, contacts: res.data.contactList })
         })
         .catch(err => console.log(err)) 
 
         // GET DOCTOR INFO FROM DB
+        // axios.get(`/api/user/getdoctor/${props.match.params.did}`)
+        // .then(res => setDoctor(res.data))
+        // .catch(err => console.log(err))
 
-        axios.get(`/api/user/getdoctor/${props.match.params.did}`)
-        .then(res => setDoctor(res.data))
+        axios.put(`/api/chat/add-contact/${props.match.params.did}/${props.match.params.pid}`)
+        .then(res => console.log('add:',res))
         .catch(err => console.log(err))
 
-        axios.put(`/api/chat/add-contact/${props.match.params.did}/5db09e5e26d653340c473b11`)
-        .then(res => {setUserdata({ _id: res.data[0]._id, name: res.data[0].name, email: res.data[0].email, contacts: res.data[0].contactList })
+        // CREATE ROOM/ LOAD MESSAGES
+
+        axios.post(`/api/chat/create-room/${props.match.params.did}/${props.match.params.pid}`)
+        .then(res=> console.log(res))
+        .catch(err => console.log(err))
+
+        axios.get(`/api/chat/load-messages/${props.match.params.did}/${props.match.params.pid}`)
+        .then( (res) => { 
+            res.data[0].messages.map((msg)=>{
+                setMessages( (messages)=> ([...messages, msg]) )
+
+                return 0
+            })  
         })
-        .catch(err => console.log(err))
-        
+        .catch(err => console.log(err))   
+
     }, [])
 
     useEffect(() => {
@@ -65,11 +80,27 @@ export default function Dashboard(props, location) {
           if(error) {
             alert(error);
           }
-        });
+        })
+
+        // let msgs = document.getElementById('messages')
+        // msgs.innerHTML = ''
+
+        // messages.map((data)=> {
+        //     let messages = document.getElementById('messages')
+
+        //     let message = document.createElement('div')
+        //     message.setAttribute('class', 'chat-message')
+        //     message.textContent = data.name+': '+data.message
+            
+        //     messages.appendChild(message)
+            
+        //     return 0
+        // })
     
       }, [ENDPOINT, location.search])
 
     useEffect(() => {
+
         socket.on('message', (message) => {
           setMessages([...messages, message ])
         });
@@ -95,10 +126,11 @@ export default function Dashboard(props, location) {
 
     return (
         <div>
+            {console.log(userdata)}
             <div className="dasboard">
                 <Link to='/' className="back-home">Go Back Home</Link>
                 <div className="top-bar">
-                    <p>{doctor.map(data=>data.name)}</p>
+                    <p>User: {userdata.name} {doctor.map(data=>data.name)}</p>
                     <div className="videocall"><img src={vcall} alt=""/></div>
                 </div>
                 
@@ -108,7 +140,6 @@ export default function Dashboard(props, location) {
                 <div className="chat-wr">
                     <div className="chat-screen" id='messages'>
                         <InfoBar room={rooms} />
-                        <TextContainer users={users}/>
                         <Messages messages={messages} name={username} />
                     </div>
                     <div className='chat-screen-form'>

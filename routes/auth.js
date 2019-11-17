@@ -14,6 +14,11 @@ router.get('/getdoctors', async (req, res)=> {
     res.send(doc)
 })
 
+router.get('/getusers', async (req, res)=> {
+    const user = await User.find()
+    res.send(user)
+})
+
 router.post('/register/patient', async (req, res) => {
     const {error} = registerValidation(req.body)
     if (error) return res.status(400).send(error.details[0].message)
@@ -71,7 +76,7 @@ router.post('/login/patient', async (req, res) => {
     const validPass = await bcrypt.compare(req.body.password, user.password)
     if(!validPass) return res.status(400).send('Email or password is incorrect')
 
-    const token = jwt.sign({_id: user._id, name: user.name, email: user.email, contactList: user.contactList}, process.env.TOKEN_SECRET)
+    const token = jwt.sign({_id: user._id, name: user.name, email: user.email, type: user.type, contactList: user.contactList}, process.env.TOKEN_SECRET)
     res.header('authToken', token).send('logged in')
 })
 
@@ -87,8 +92,8 @@ router.post('/login/doctor', async (req, res)=> {
 
     if(! doc.approved ) return res.status(400).send('Your account was not approved yet!')
 
-    const token = jwt.sign({_id: doc._id, name: doc.name, email: doc.email}, process.env.TOKEN_SECRET)
-    res.header('authToken', token).send('logged in as doctor')
+    const token = jwt.sign({_id: doc._id, name: doc.name, email: doc.email, type: doc.type,contactList: doc.contactList}, process.env.TOKEN_SECRET)
+    res.header('authToken', token).send(doc)
 
 })
 
