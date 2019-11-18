@@ -139,7 +139,7 @@ export default function Dashboard(props, location) {
                 </div>
                 <div className="chat-wr">
                     <div className="chat-screen" id='messages'>
-                        <InfoBar room={rooms} />
+                        <InfoBar room={rooms} />    
                         <Messages messages={messages} name={username} />
                     </div>
                     <div className='chat-screen-form'>
