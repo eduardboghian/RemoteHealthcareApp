@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import ScrollToBottom from 'react-scroll-to-bottom'
 
 import '../css/ReviewsSection.css'
 
@@ -21,8 +22,22 @@ export default function ReviewsSection() {
             setUserId(res.data._id)
             setUsername(res.data.name)
         })
-        .catch(err => console.log(err)) 
+        .catch(err => console.log(err))
     }, [])
+
+    useEffect(()=>{
+        reviews.map((data)=>{
+            const reviews = document.getElementById('reviews')
+
+            let review = document.createElement('div')
+            review.textContent = data.name+': '+data.message
+            reviews.appendChild(review)
+
+            return 0    
+        })
+        
+        
+    },[reviews])
 
     function hendleSubmit() {
         axios.post('/api/chat/addreview', {
@@ -36,8 +51,10 @@ export default function ReviewsSection() {
 
     return (
         <div className='reviews-wr'>
-            <div className="reviews">
-                {reviews.map()}
+            <div className="reviews-screen">
+                <ScrollToBottom>
+                    <div id="reviews"></div>
+                </ScrollToBottom>
             </div>
 
             <div className="form-wr">
@@ -48,7 +65,7 @@ export default function ReviewsSection() {
                     placeholder="Type a message..."
                     value={message}
                     onChange={({ target: { value } }) => setMessage(value)}
-                    onKeyPress={event => event.key === 'Enter' ?hendleSubmit(event) : null}
+                    //onKeyPress={event => event.key === 'Enter' ?hendleSubmit(event) : null}
                     />
                     <button className="sendButton" onClick={e => hendleSubmit(e)}>Send</button>
                 </form>

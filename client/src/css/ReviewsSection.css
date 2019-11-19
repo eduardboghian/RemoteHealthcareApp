@@ -7,6 +7,13 @@
   position: relative;
 }
 
+.reviews-wr .reviews-screen {
+  padding-top: 10px;
+  width: 96%;
+  height: 90%;
+  margin: 2%;
+}
+
 .reviews-wr .form-wr {
   width: 100%;
   position: absolute;
