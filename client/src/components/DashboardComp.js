@@ -7,7 +7,6 @@ import io from 'socket.io-client'
 import Messages from './Messages/Messages'
 import Input from './Input/Input'
 import InfoBar from './InfoBar/InfoBar'
-import TextContainer from './TextContainer/TextContainer'
 import ContactList from './ContactList'
 
 let socket
@@ -121,12 +120,11 @@ export default function Dashboard(props, location) {
 
         if(message) {
             socket.emit('sendMessage', message, () => setMessage(''));
-        }
+        }                   
     }
 
     return (
-        <div>
-            {console.log(userdata)}
+        <div> 
             <div className="dasboard">
                 <Link to='/' className="back-home">Go Back Home</Link>
                 <div className="top-bar">

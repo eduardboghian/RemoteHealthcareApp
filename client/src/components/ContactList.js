@@ -28,25 +28,33 @@ export default function ContactList({props, contactList}) {
     }, [])
 
     useEffect(() => {
-        
         if(type === 'patient'){
             contactList.map((data) =>{
                 if(doctors.data !== undefined){
-                    let contact = { name: doctors.data.find(  d => d._id===data).name, id: doctors.data.find(  d => d._id===data)._id}
+                    console.log('data doc:', doctors.data)
+                    let contact = { name: doctors.data.find(d => d._id===data).name, id: doctors.data.find(d => d._id===data)._id }
                     setContacts(contacts => [...contacts, contact])
                 }
             })
-        }else {
+            return
+        }
+        
+    },[contactList, type, doctors])
+
+    useEffect(() => {
+        if(type === 'doctor'){
             contactList.map((data) =>{
 
                 if(patients.data !== undefined){
-                    let contact = { name: patients.data.find(  d => d._id===data).name, id: patients.data.find(  d => d._id===data)._id}
+                    let contact = { name: patients.data.find(d => d._id===data).name, id: patients.data.find(d => d._id===data)._id }
                     setContacts(contacts => [...contacts, contact])
                 }
             })
+            return
         }
         
-    },[])
+    },[contactList, type, patients])
+
 
     function redirectHandler(e, docId) {
         e.preventDefault()
@@ -63,7 +71,7 @@ export default function ContactList({props, contactList}) {
     return (
         <div>
             {contacts.map((data, i) => 
-                <div className="contacts" key={i} onClick={ e => redirectHandler(e, data.id) }  >{data.name}</div> 
+                <div className="contacts" key={i} onClick={ e => redirectHandler(e, data.id) }>{data.name}</div> 
             )}
         </div>
     )
