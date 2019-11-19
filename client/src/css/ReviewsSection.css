@@ -1,0 +1,27 @@
+.reviews-wr {
+  margin: 0 auto 50px;
+  width: 80%;
+  height: 600px;
+  background-color: #ddd;
+  border: none;
+  position: relative;
+}
+
+.reviews-wr .form-wr {
+  width: 100%;
+  position: absolute;
+  bottom: 5px;
+}
+
+.reviews-wr .form-wr input {
+  float: left;
+}
+
+.reviews-wr .form-wr .sendButton {
+  width: 10%;
+  float: right;
+  height: 40px;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+/*# sourceMappingURL=ReviewsSection.css.map */

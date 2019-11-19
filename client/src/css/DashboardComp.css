@@ -69,6 +69,7 @@
 
 .chat-wr .chat-screen {
   padding: 10px 30px;
+  overflow: hidden;
 }
 
 .chat-wr .chat-screen-form {

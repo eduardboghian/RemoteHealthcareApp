@@ -2,10 +2,6 @@ const { Messages, Room } = require('../models/chat')
 const { User, Doctor } = require('../models/user')
 const router = require('express').Router()
 
-// useEffect will call this api to laod the messages for the specific room
-// [] FIND THE ROOM
-// [] RES MESSAGES
-
 router.get('/load-messages/:did/:pid', async (req, res)=>{
     let room = await Room.find({ docId: req.params.did, patientId: req.params.pid })
 
@@ -63,6 +59,25 @@ router.put('/add-contact/:did/:pid', async (req, res)=> {
 router.delete('/messages', async (req, res)=> {
     const msgs = await Messages.deleteMany()
     res.send(msgs)
+})
+
+
+// REVIEWS
+
+router.get('/getreviews', async (req, res)=> {
+    const reviews = await Messages.find()
+    res.send(reviews)
+})
+
+router.post('/addreview', async (req, res)=> {
+    let review = new Messages({
+        userId: req.body.userId,
+        message: req.body.message,
+        name: req.body.name
+    })
+    review = await review.save()
+
+    res.send(review)
 })
 
 module.exports = router
