@@ -4,6 +4,7 @@ import Login from './components/Login'
 import Home from './components/Home'
 import { Route } from 'react-router-dom'
 import Dashboard from './components/DashboardComp'
+import VideoRoom from './components/VideoRoom'
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Route exact path='/' component={Home} />
       <Route path='/login' component={Login} />
       <Route path="/dashboard/:did/:pid/:name" component={Dashboard} />
+      <Route path='/videoroom' component={VideoRoom} />
     </div>
   )
 }
