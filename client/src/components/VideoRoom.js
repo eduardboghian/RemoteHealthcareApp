@@ -4,7 +4,7 @@ import axios from 'axios'
 import './index.css'
 
 
-export default function VideoRoom() {
+export default function VideoRoom(props) {
 
     let activeRoom
     let previewTracks
@@ -24,7 +24,7 @@ export default function VideoRoom() {
 
         // Bind button to join Room.
         document.getElementById('button-join').onclick = function() {
-            roomName = 'room1'
+            roomName = props.match.params.did+props.match.params.pid
             if (!roomName) {
                 alert('Please enter a room name.')
                 return
@@ -178,13 +178,9 @@ export default function VideoRoom() {
             <div id="remote-media"></div>
                 <div id="controls">
                 <div id="preview">
-                    <p className="instructions">Hello Beautiful</p>
                     <div id="local-media"></div>
-                    <button className="button-preview">Preview My Camera</button>
                 </div>
                 <div id="room-controls">
-                    <p className="instructions">Room Name:</p>
-                    <input id="room-name" type="text" placeholder="Enter a room name" />
                     <button id="button-join">Join Room</button>
                     <button id="button-leave">Leave Room</button>
                 </div>

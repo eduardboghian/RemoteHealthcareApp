@@ -123,13 +123,19 @@ export default function Dashboard(props, location) {
         }                   
     }
 
+    const handleClick = (e) => {
+        e.preventDefault()
+
+        props.history.push(`/videoroom/${props.match.params.did}/${props.match.params.pid}/${userdata.name}`)
+    }
+
     return (
         <div> 
             <div className="dasboard">
                 <Link to='/' className="back-home">Go Back Home</Link>
                 <div className="top-bar">
                     <p>User: {userdata.name} {doctor.map(data=>data.name)}</p>
-                    <div className="videocall"><img src={vcall} alt=""/></div>
+                    <div className="videocall" onClick={ e => handleClick(e) }><img src={vcall} alt=""/></div>
                 </div>
                 
                 <div className="contact-list">
