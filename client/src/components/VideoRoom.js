@@ -19,8 +19,8 @@ export default function VideoRoom() {
     axios.get('/api/token')
     .then( data=> {
         console.log(data)
-        identity = data.data.identity;
-        document.getElementById('room-controls').style.display = 'block';
+        identity = data.data.identity
+        document.getElementById('room-controls').style.display = 'block'
 
         // Bind button to join Room.
         document.getElementById('button-join').onclick = function() {

@@ -50,6 +50,12 @@
   margin: 0 10px;
 }
 
+.home-wr h1 {
+  font-weight: 400;
+  position: relative;
+  margin: 30px 16.5% 0;
+}
+
 .home-wr .display-none {
   display: none;
 }

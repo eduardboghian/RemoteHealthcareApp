@@ -3,13 +3,14 @@
 
 .Bottom {
     display: flex;
-    background-color: #ddd;
+    background-color: #2f2f2f;
     position: relative;
-    min-height: 400px;
+    min-height: 300px;
     margin-bottom: 0;
     flex-direction: column;
     justify-content: space-evenly;
     width: 80%;
+    color: #f2f2f2;
     margin: 0 auto;
 
     @include media ("<tablet") {
@@ -30,6 +31,7 @@
 
     a {
         padding: 50px;
+        color: #f2f2f2;
         text-decoration: none;
 
         @include media ("<tablet") {
@@ -72,10 +74,11 @@
         display: flex;
         justify-content: center;
         margin: 10px 0;
+        color: #f2f2f2;
 
         a {
             text-decoration: none;
-            color: black;
+            color: #f2f2f2;
         }
 
         @include media ("<tablet") {
@@ -84,7 +87,7 @@
 
         li {
             list-style: none;
-
+            color: #f2f2f2;
             margin-left: 20px;
 
             @include media ("<tablet") {

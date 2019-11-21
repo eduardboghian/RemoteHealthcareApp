@@ -80,7 +80,7 @@ export default function Home(props) {
 
                     </div>
                 </div>
-
+                <h1>Reviews Section</h1>
                 <ReviewsSection />
 
                 <Footer />

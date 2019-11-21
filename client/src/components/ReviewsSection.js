@@ -30,16 +30,34 @@ export default function ReviewsSection() {
             const reviews = document.getElementById('reviews')
 
             let review = document.createElement('div')
-            review.textContent = data.name+': '+data.message
-            reviews.appendChild(review)
+            review.setAttribute('class', 'review')
 
+            let logo = document.createElement('div')
+            logo.setAttribute('class', 'user-logo')
+            logo.textContent = data.name.slice(0,1).toUpperCase()  
+
+            let username = document.createElement('div')
+            username.setAttribute('class', 'username')
+            username.textContent = data.name
+
+            let text = document.createElement('p')
+            text.setAttribute('class', 'text')
+            text.textContent = data.message
+
+            review.appendChild(logo)
+            review.appendChild(username)
+            review.appendChild(text)
+
+            reviews.appendChild(review)
             return 0    
         })
         
         
     },[reviews])
 
-    function hendleSubmit() {
+    function hendleSubmit(e) {
+        //e.preventDefault()
+
         axios.post('/api/chat/addreview', {
             name: username,
             message: message,
@@ -50,6 +68,7 @@ export default function ReviewsSection() {
     }
 
     return (
+        
         <div className='reviews-wr'>
             <div className="reviews-screen">
                 <ScrollToBottom>
