@@ -87,7 +87,7 @@ io.on('connect', (socket) => {
 let AccessToken = require('twilio').jwt.AccessToken
 let VideoGrant = AccessToken.VideoGrant
 
-app.get('/api/token', function(request, response) {
+app.get('/api/token/:name', function(request, response) {
   let identity = 'edi'
 
   // Create an access token which we will sign and return to the client,

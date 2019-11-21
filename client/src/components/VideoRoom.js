@@ -11,12 +11,14 @@ export default function VideoRoom(props) {
     let identity
     let roomName
 
+    
+
     // When we are about to transition away from this page, disconnect
     // from the room, if joined.    
     window.addEventListener('beforeunload', leaveRoomIfJoined)
 
     // Obtain a token from the server in order to connect to the Room.
-    axios.get('/api/token')
+    axios.get(`/api/token/${props.match.params.name}`)
     .then( data=> {
         console.log(data)
         identity = data.data.identity
