@@ -61,7 +61,7 @@ export default function VideoRoom(props) {
     // Attach the Tracks to the DOM.
     function attachTracks(tracks, container) {
         tracks.forEach(function(track) {
-        container.appendChild(track.attach());
+            container.appendChild(track.attach())
         })
     }
     
@@ -116,6 +116,7 @@ export default function VideoRoom(props) {
         room.on('trackAdded', function(track, participant) {
           console.log(participant.identity + " added track: " + track.kind)
           let previewContainer = document.getElementById('remote-media')
+          console.log(tracks, previewContainer)
           attachTracks([track], previewContainer)
         });
       
@@ -160,6 +161,7 @@ export default function VideoRoom(props) {
             let previewContainer = document.getElementById('local-media')
             if (!previewContainer.querySelector('video')) {
                 attachTracks(tracks, previewContainer)
+                console.log(tracks, previewContainer)
             }
         }, function(error) {
             console.error('Unable to access local media', error)
