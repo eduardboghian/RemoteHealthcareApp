@@ -3,14 +3,12 @@ const bodyParser =require('body-parser')
 const path = require('path')
 const dotenv = require('dotenv')
 const cors = require('cors')
-const axios = require('axios')
 const mongoose = require('mongoose')
 const express = require('express')
 const app = express()
 const http = require('http').createServer(app);
 const io = require('socket.io')(http)
-const { Patient, Doctor } = require('./models/user')
-const { Messages, Room } = require('./models/chat')
+const { Room } = require('./models/chat')
 
 //IMPORT ROUTES
 
@@ -88,7 +86,7 @@ let AccessToken = require('twilio').jwt.AccessToken
 let VideoGrant = AccessToken.VideoGrant
 
 app.get('/api/token/:name', function(request, response) {
-  let identity = 'edi'
+  let identity = request.params.name
 
   // Create an access token which we will sign and return to the client,
   // containing the grant we just created.
