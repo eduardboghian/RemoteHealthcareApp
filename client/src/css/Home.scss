@@ -48,6 +48,23 @@
             }
 
         }
+
+        .username {
+            cursor: pointer;
+        }
+
+        .logout {
+            width: 80px;
+            text-align: center;
+            height: 35px;
+            background: #F75B4A;
+            border-radius: 10px;
+            float: right;
+            position: relative;
+            top: -4px;
+            margin-left: 15px;
+            line-height: 32px;
+        }
     }
 
     h1 {

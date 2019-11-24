@@ -31,6 +31,13 @@ export default function Home(props) {
         props.history.push(`/dashboard/${docId}/${patientId}/${userdata.name}`)
     }
 
+    function handleLogout(e) {
+        e.preventDefault()
+
+        sessionStorage.removeItem('authtoken')
+        props.history.push(`/login`)
+    } 
+
     return (
         <div >
             <div className='home-wr'>
@@ -44,7 +51,10 @@ export default function Home(props) {
                     <div className="user-bar">
                         
                         <div className={ userdata.name ? 'display-none' : 'auth-bar' }> <Link className='login-btn' to='/login' >Login</ Link> <Link to='/register' >Sign Up</Link> </div>
-                        {userdata.name}
+                        <div className={ userdata.name ? 'username' : 'display-none'}>
+                            {userdata.name}
+                            <div className="logout" onClick={ e => handleLogout(e) }>Log out</div>
+                        </div>
                     </div>
                     
                 </nav>

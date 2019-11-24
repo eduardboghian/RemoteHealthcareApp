@@ -1,7 +1,7 @@
 import React from 'react'
 import Video from 'twilio-video'
 import axios from 'axios'
-import './index.css'
+import '../css/VideoRoom.css'
 
 
 export default function VideoRoom(props) {
@@ -54,7 +54,7 @@ export default function VideoRoom(props) {
 
         // Bind button to join Room.
         document.getElementById('button-join').onclick = function() {
-            roomName = document.getElementById('room-name').value
+            roomName = props.match.params.did+props.match.params.pid
             if (!roomName) {
                 alert('Please enter a room name.')
                 return
@@ -92,6 +92,7 @@ export default function VideoRoom(props) {
     log("Joined as '" + identity + "'");
     document.getElementById('button-join').style.display = 'none'
     document.getElementById('button-leave').style.display = 'inline'
+    document.getElementById('wait').style.display = 'inline'
 
     // Attach LocalParticipant's Tracks, if not already attached.
     let previewContainer = document.getElementById('local-media');
@@ -182,22 +183,17 @@ export default function VideoRoom(props) {
 
 
     return (
-        <div>
-            video room
-            <div id="remote-media"></div>
-            <div id="controls">
-            <div id="preview">
-                <p className="instructions">Hello Beautiful</p>
-                <div id="local-media"></div>
-                <button className="button-preview">Preview My Camera</button>
-            </div>
-            <div id="room-controls">
-                <p className="instructions">Room Name:</p>
-                <input id="room-name" type="text" placeholder="Enter a room name" />
-                <button id="button-join">Join Room</button>
-                <button id="button-leave">Leave Room</button>
-            </div>
-            <div id="log"></div>
+        <div className='vc-screen'>
+            <div id="remote-media" className='remote-media'> <p id='wait'>Waiting for user...</p> </div>
+            <div id="controls" className='controls'>
+                <div id="preview" className="preview">
+                    <div id="local-media" className="local-media"></div>
+                </div>
+                <div id="room-controls" className="room-controls">
+                    <button id="button-join">Join Room</button>
+                    <button id="button-leave" className="button-leave">Leave Room</button>
+                </div>
+                <div id="log" className="log"></div>
             </div>
         </div>
     )

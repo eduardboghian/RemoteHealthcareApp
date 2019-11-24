@@ -50,6 +50,23 @@
   margin: 0 10px;
 }
 
+.home-wr nav .username {
+  cursor: pointer;
+}
+
+.home-wr nav .logout {
+  width: 80px;
+  text-align: center;
+  height: 35px;
+  background: #F75B4A;
+  border-radius: 10px;
+  float: right;
+  position: relative;
+  top: -4px;
+  margin-left: 15px;
+  line-height: 32px;
+}
+
 .home-wr h1 {
   font-weight: 400;
   position: relative;
