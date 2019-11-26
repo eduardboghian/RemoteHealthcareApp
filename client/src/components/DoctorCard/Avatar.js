@@ -1,5 +1,5 @@
 import React from 'react'
-import profilePicture from '../../media/dc.png'
+import profilePicture from '../../media/dc.jpg'
 
 export default function Avatar() {
     return (

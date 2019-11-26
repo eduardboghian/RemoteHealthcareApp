@@ -8,6 +8,7 @@ import videoIcon from '../media/video.png'
 import Landing from '../components/Landing/landing'
 import Footer from '../components/Footer/Footer'
 import ReviewsSection from '../components/ReviewsSection'
+import DocCard from '../components/DoctorCard/DoctorCard'
 
 export default function Home(props) {
     const [userdata, setUserdata] = useState({
@@ -78,15 +79,7 @@ export default function Home(props) {
                             </div>
                             <p>* * * * *</p>
                         </div>
-                        <div className="doc-card">
-                            salut
-                        </div>
-                        <div className="doc-card">
-                            salu
-                        </div>
-                        <div className="doc-card">
-                            salut
-                        </div>
+                        <DocCard />
 
                     </div>
                 </div>
