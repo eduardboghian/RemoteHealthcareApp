@@ -8,7 +8,29 @@ const express = require('express')
 const app = express()
 const http = require('http').createServer(app);
 const io = require('socket.io')(http)
+const { Doctor } = require('./models/user')
 const { Room } = require('./models/chat')
+const multer  = require('multer')
+
+const storage = multer.diskStorage({
+  destination: function(req, file, cb) {
+    cb(null, './uploads/')
+  },
+
+  filename: function(req, file, cb) {
+    cb(null, file.originalname)
+  } 
+})
+
+const fileFilter = (req, file, cb) => {
+  if( file.mimetype === 'image/jpeg' || file.mimetype === 'image/png' ) {
+    cb(null, true)
+  } else {
+    cb(null, false)
+  }
+}
+
+const upload = multer({ storage: storage, fileFilter: fileFilter})
 
 //IMPORT ROUTES
 
@@ -24,6 +46,7 @@ app.use((req, res, next) => {
   next();
 });
 app.use(bodyParser.urlencoded({ extended: false }))
+app.use('/uploads/', express.static('uploads'))
 app.use(cookieParser())
 app.use(cors())
 
@@ -35,6 +58,16 @@ app.use('/api/chat', chatRoute)
 // DB CONNECTION 
 
 mongoose.connect(process.env.DB_CONNECT,  { useNewUrlParser: true }, console.log('db connected...'))
+
+// UPLOAD PROFILE PICTURE
+
+app.post('/api/profile/:id', upload.single('avatar'), async function (req, res, next) {
+  console.log(req.file, req.params.id)
+
+  let doc = await Doctor.findOneAndUpdate({_id: req.params.id}, { profilePic: req.file.path }, { new:true })
+
+  res.send(doc)
+})
 
 // SOKET.IO
 const { addUser, removeUser, getUser, getUsersInRoom } = require('./users')
@@ -109,6 +142,11 @@ app.get('/api/token/:name', function(request, response) {
     token: token.toJwt()
   })
 })
+
+// STRIPE IMPLEMENTATION
+
+const stripe = require("stripe")("sk_test_ggCjI9rKE5AlDbdy2afR8SqG005pQTMGCn")
+
 
 
 if (process.env.NODE_ENV === "production") {

@@ -1,10 +1,14 @@
 import React from 'react'
-import profilePicture from '../../media/dc.jpg'
+import '../Profile/Profile.css'
 
-export default function Avatar() {
+export default function Avatar(path) {
+    const newPath = path.path.replace(/^'(.*)'$/, '$1')
+
+
     return (
-        <div>
-            <img src={ profilePicture } alt=""/>
+        <div className='avatar'>
+            <img src={`/${newPath}`} alt=""/>
         </div>
     )
 }
+                                        

@@ -1,0 +1,116 @@
+.star-ratings {
+  position: relative;
+  left: 20px;
+  top: 20px;
+}
+
+.rating {
+  float: left;
+  position: relative;
+  margin: 22px 0 0 60px;
+}
+
+.doctors-wr {
+  width: 80%;
+  height: 1200px;
+  margin: 0 auto;
+}
+
+.doctors-wr h1 {
+  font-weight: 400;
+  position: relative;
+  margin: 30px 6.5% 0;
+}
+
+.doctors-wr .cards-wr {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto auto auto;
+      grid-template-columns: auto auto auto;
+}
+
+.doctors-wr .cards-wr .doc-card {
+  margin: 30px 0;
+  width: 325px;
+  height: 500px;
+  -ms-grid-column-align: center;
+      justify-self: center;
+  background: #f5f5f5;
+  -webkit-box-shadow: 4px 4px 4px rgba(27, 129, 218, 0.25);
+          box-shadow: 4px 4px 4px rgba(27, 129, 218, 0.25);
+  display: inline-block;
+}
+
+.doctors-wr .cards-wr .doc-card img {
+  width: 100%;
+  height: 250px;
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+.doctors-wr .cards-wr .doc-card p {
+  margin: 13px 0;
+  text-align: center;
+  font-size: 18px;
+}
+
+.doctors-wr .cards-wr .doc-card span {
+  color: #777;
+}
+
+.doctors-wr .cards-wr .doc-card .doc-name {
+  font-size: 22px;
+}
+
+.doctors-wr .cards-wr .doc-card .contact-doc {
+  width: 80%;
+  margin: 30px auto 0;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 33% 33% 33%;
+      grid-template-columns: 33% 33% 33%;
+}
+
+.doctors-wr .cards-wr .doc-card .contact-doc .more-info {
+  cursor: pointer;
+  -ms-grid-column-align: center;
+      justify-self: center;
+  width: 60px;
+  height: 35px;
+  border: none;
+  background-color: #3187f4;
+  border-radius: 10px;
+  color: #fff;
+}
+
+.doctors-wr .cards-wr .doc-card .contact-doc .text-doc {
+  cursor: pointer;
+  width: 60px;
+  height: 40px;
+  border: none;
+  background-color: inherit;
+  padding: 0;
+  margin-left: 5px;
+}
+
+.doctors-wr .cards-wr .doc-card .contact-doc .text-doc img {
+  width: 100%;
+  height: 96%;
+}
+
+.doctors-wr .cards-wr .doc-card .contact-doc .videocall-doc {
+  cursor: pointer;
+  width: 60px;
+  height: 50px;
+  border: none;
+  background-color: inherit;
+  padding: 0;
+  margin-top: -8px;
+}
+
+.doctors-wr .cards-wr .doc-card .contact-doc .videocall-doc img {
+  width: 100%;
+  height: 100%;
+}
+/*# sourceMappingURL=DoctorCard.css.map */

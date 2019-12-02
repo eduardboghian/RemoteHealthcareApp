@@ -5,6 +5,7 @@ import Home from './components/Home'
 import { Route } from 'react-router-dom'
 import Dashboard from './components/DashboardComp'
 import VideoRoom from './components/VideoRoom'
+import Profile from './components/Profile/Profile'
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Route path='/login' component={Login} />
       <Route path="/dashboard/:did/:pid/:name" component={Dashboard} />
       <Route path='/videoroom/:did/:pid/:name' component={VideoRoom} />
+      <Route path='/profile/:id' component={Profile} />
     </div>
   )
 }

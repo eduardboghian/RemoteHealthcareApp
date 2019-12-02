@@ -51,6 +51,24 @@ const docSchema = new mongooose.Schema({
     },
     contactList: {
         type: Array
+    },
+    rating: {
+        type: Number
+    },
+    raters: {
+        type: Number
+    },  
+    profilePic: {
+        type: String
+    },
+    degree: {
+        type: String
+    },
+    departament: {
+        type: String
+    },
+    profileInfo: {
+        type: Array
     }  
 })
 

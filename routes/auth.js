@@ -59,7 +59,7 @@ router.post('/register/doctor', async (req, res) => {
         idCardNr: req.body.idCardNr,
         type: 'doctor',
         approved: false,
-        contactList: []    
+        contactList: [] 
     })
     doc = await doc.save()
 
@@ -101,6 +101,36 @@ router.post('/getinfo', async (req, res)=> {
     const token = req.body.token
     const decoded = jwt.verify(token, process.env.TOKEN_SECRET)
     res.send(decoded)
+})
+
+// UPDATE DOC INFO
+
+router.put('/rate/:id', async (req, res)=> {
+    let doc = await Doctor.findOne({_id: req.params.id})
+    const raters = doc.raters+1
+    const rating = doc.rating + req.body.rating
+
+    doc = await Doctor.findOneAndUpdate({_id: req.params.id},{ rating: rating, raters: raters}, {new:true})
+
+    res.send(doc)
+})
+
+router.put('/add-degree/:id', async (req, res)=> {
+    const doc = await Doctor.findOneAndUpdate({ _id: req.params.id }, { degree: req.body.degree }, { new: true })
+
+    res.send(doc)
+})
+
+router.put('/add-dep/:id', async (req, res) => {
+    const doc = await Doctor.findOneAndUpdate({ _id: req.params.id }, { departament: req.body.departament }, { new: true })
+
+    res.send(doc)
+})
+
+router.put('/add-info/:id', async (req, res)=> {
+    const doc = await Doctor.findByIdAndUpdate({ _id: req.params.id }, {$push: {profileInfo: req.body.info}}, {new: true})
+
+    res.send(doc)
 })
 
 module.exports = router

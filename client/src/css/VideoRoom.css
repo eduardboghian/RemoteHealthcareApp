@@ -108,6 +108,7 @@
 
 .vc-screen .log {
   border: 1px solid #686865;
+  display: none;
 }
 
 .vc-screen .room-controls {

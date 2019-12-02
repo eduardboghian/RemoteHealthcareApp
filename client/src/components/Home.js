@@ -2,9 +2,6 @@ import React, { useState, useEffect } from 'react'
 import '../css/Home.css'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
-import dc from '../media/dc.jpg'
-import textIcon from '../media/1.5x/text-icon@1.5x.png'
-import videoIcon from '../media/video.png'
 import Landing from '../components/Landing/landing'
 import Footer from '../components/Footer/Footer'
 import ReviewsSection from '../components/ReviewsSection'
@@ -65,23 +62,12 @@ export default function Home(props) {
 
                 <div className="doctors-wr">
                     <h1>Our Doctors:</h1>
-                    <div className="cards-wr">
-                        <div className="doc-card">
-                            <img src={dc} alt=""/>
-                            <p className='doc-name'>Dr. Alexandru Ghiorghe</p>
-                            <p className="departament"> <span> Departament: </span>  Creier</p>
-                            <p className='degree'> <span>  Degree: </span> Hartie</p>
-                            <div className="contact-doc">
-                                <button className="more-info">More Info</button>
-                                <button className='text-doc' onClick={ e => contactDoc('5db7faf86ea78434fc897841')}> <img src={textIcon} alt=""/> </button>
-                                <button className='text-doc' onClick={ e => contactDoc('5db83e23ebc2113fc4bf0942')}> <img src={textIcon} alt=""/> </button>
-                                <button className="videocall-doc"> <img src={videoIcon} alt=""/> </button>
-                            </div>
-                            <p>* * * * *</p>
-                        </div>
-                        <DocCard />
+                    {/* <form action={`/api/profile/${userdata._id}`} method="post" encType="multipart/form-data">
+                        <input type="file" name="avatar"  />
+                        <button type='submit'>Send Picture</button>
+                    </form> */}
+                    <DocCard props={props}/>
 
-                    </div>
                 </div>
                 <h1>Reviews Section</h1>
                 <ReviewsSection />
