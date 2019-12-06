@@ -24,11 +24,6 @@ export default function Home(props) {
         .catch(err => console.log(err)) 
     }, [])
 
-    function contactDoc(docId) {
-        let patientId = userdata._id
-        props.history.push(`/dashboard/${docId}/${patientId}/${userdata.name}`)
-    }
-
     function handleLogout(e) {
         e.preventDefault()
 
@@ -60,12 +55,8 @@ export default function Home(props) {
                     <Landing />
                 </div>
 
-                <div className="doctors-wr">
+                <div className="doctors-wr" id='dr'>
                     <h1>Our Doctors:</h1>
-                    {/* <form action={`/api/profile/${userdata._id}`} method="post" encType="multipart/form-data">
-                        <input type="file" name="avatar"  />
-                        <button type='submit'>Send Picture</button>
-                    </form> */}
                     <DocCard props={props}/>
 
                 </div>

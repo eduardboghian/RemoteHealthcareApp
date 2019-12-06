@@ -3,13 +3,43 @@
 }
 
 .avatar {
-  width: 200px;
-  float: left;
+  position: relative;
+  width: 100%;
+  height: 100%;
 }
 
 .avatar img {
+  width: 100%;
+  height: 100%;
+}
+
+.profile-pic {
+  float: left;
   width: 200px;
   height: 200px;
+  border: 1.5px solid #777;
+  border-radius: 2px;
+  position: relative;
+}
+
+.profile-pic button {
+  border: none;
+  background: #F75B4A;
+  color: #fff;
+  height: 30px;
+  border-radius: 4px;
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+
+.profile-pic form input {
+  border: none;
+  color: #fff;
+  left: 26%;
+  position: relative;
 }
 
 .profile-wr {
@@ -24,10 +54,19 @@
   position: absolute;
   width: 100%;
   height: 100%;
-  -webkit-clip-path: polygon(100% 0%, 100% 100%, 0% 100%);
-          clip-path: polygon(100% 0%, 100% 100%, 0% 100%);
-  background: #3187f4;
   z-index: -1;
+}
+
+.profile-wr .profile-bg img {
+  width: 40%;
+  height: 40%;
+  position: absolute;
+  left: 45%;
+  top: 20px;
+}
+
+.profile-wr button {
+  cursor: pointer;
 }
 
 .profile-wr h1 {
@@ -36,11 +75,15 @@
   padding: 10px 0;
 }
 
+.profile-wr .br {
+  padding-top: 50px !important;
+}
+
 .profile-wr .profile-info {
   width: 98%;
   height: 350px;
   border-radius: 10px;
-  background-color: #fff;
+  background-color: inherit;
 }
 
 .profile-wr .general-info p {
@@ -71,7 +114,7 @@
 
 .profile-wr .profile-info input {
   border: none;
-  border-bottom: 1px solid #777;
+  border-bottom: 1.5px solid #777;
   margin-right: 20px;
   padding-left: 10px;
   font-size: 16px;
@@ -91,6 +134,30 @@
 }
 
 .profile-wr .profile-info .profile-text {
-  width: 70%;
+  width: 65%;
+}
+
+.profile-wr .profile-info .infos div {
+  background: #3187f4;
+  margin: 3px 0;
+  width: 87%;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 18px;
+}
+
+.profile-wr .profile-info .infos div div {
+  display: inline-block;
+}
+
+.profile-wr .profile-info .infos .info-title {
+  width: 100px;
+  font-size: 16px !important;
+  text-indent: 10px;
+}
+
+.profile-wr .profile-info .infos .info-text {
+  width: 65%;
+  text-indent: 34px;
 }
 /*# sourceMappingURL=Profile.css.map */

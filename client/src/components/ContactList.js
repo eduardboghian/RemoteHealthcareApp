@@ -31,9 +31,10 @@ export default function ContactList({props, contactList}) {
         if(type === 'patient'){
             contactList.map((data) =>{
                 if(doctors.data !== undefined){
-                    console.log('data doc:', doctors.data)
-                    let contact = { name: doctors.data.find(d => d._id===data).name, id: doctors.data.find(d => d._id===data)._id }
-                    setContacts(contacts => [...contacts, contact])
+                    if(doctors.data.find(d => d._id===data)!==undefined) {
+                        let contact = { name: doctors.data.find(d => d._id===data).name, id: doctors.data.find(d => d._id===data)._id }
+                        setContacts(contacts => [...contacts, contact])
+                    }    
                 }
             })
             return
@@ -46,8 +47,10 @@ export default function ContactList({props, contactList}) {
             contactList.map((data) =>{
 
                 if(patients.data !== undefined){
-                    let contact = { name: patients.data.find(d => d._id===data).name, id: patients.data.find(d => d._id===data)._id }
-                    setContacts(contacts => [...contacts, contact])
+                    if(patients.data.find(d => d._id===data)!==undefined) {
+                        let contact = { name: patients.data.find(d => d._id===data).name, id: patients.data.find(d => d._id===data)._id }
+                        setContacts(contacts => [...contacts, contact])
+                    } 
                 }
             })
             return

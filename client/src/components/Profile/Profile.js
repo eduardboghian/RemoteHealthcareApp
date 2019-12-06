@@ -2,6 +2,7 @@ import React,{ useState, useEffect } from 'react'
 import './Profile.css'
 import axios from 'axios'
 import Avatar from '../DoctorCard/Avatar'
+import bg from '../../media/bg.svg'
 
 export default function Profile(props) {
     const [user, setUser] = useState([])
@@ -13,70 +14,104 @@ export default function Profile(props) {
     const [addDep, setAddDep] = useState('')
     const [title, setTitle] = useState('')
     const [text, setText] = useState('')
-    const [infos, setInfos] = useState([ ])
+    const [info, setInfo] = useState([])
+    const [id, setId] = useState('')
+    const [type, setType] = useState('')
+    
 
     useEffect(() => {
         axios.get(`/api/user/getdoctor/${props.match.params.id}`)
         .then( res => setUser([res.data[0]]) )
         .catch(err=> console.log(err))
+
+        axios.post('/api/user/getinfo', {
+            token: sessionStorage.getItem('authtoken')
+        })
+        .then(res=> {
+            setType(res.data.type)
+        })
+        .catch(err => console.log(err)) 
     }, [])
 
     useEffect(() => {
         if(user.length>0) {
-            console.log(user[0])
+            console.log(user[0].profileInfo)
+            user[0].profileInfo.map(data=> setInfo(info=>[...info, data]))
             setPath(user[0].profilePic)
             setName(user[0].name)
+            setId(user[0]._id)
             setDegree(user[0].degree)
             setDep(user[0].departament)
-            user[0].profileInfo.map(data=>{
-                setInfos( infos => ([...infos, data]) )
-            })
-            
         }
-        console.log(infos)
     }, [user])
 
     function addDegreeHandler(e) {
         e.preventDefault()
 
-        axios.put(`/api/user/add-degree/${props.match.params.id}`, {
-            degree: addDegree
-        })
-        .then( res => console.log(res) )
-        .catch( err => console.log(err) ) 
+        if( type === 'doctor') {
+            axios.put(`/api/user/add-degree/${props.match.params.id}`, {
+                degree: addDegree
+            })
+            .then( res => console.log(res) )
+            .catch( err => console.log(err) ) 
 
-        window.location.reload()
+            window.location.reload() 
+        }
+
     }
 
     function addDepHandler(e) {
         e.preventDefault()
 
-        axios.put(`/api/user/add-dep/${props.match.params.id}`, {
-            departament: addDep
-        })
-        .then( res => console.log(res) )
-        .catch( err => console.log(err) ) 
+        if( type==='doctor') {
+            axios.put(`/api/user/add-dep/${props.match.params.id}`, {
+                departament: addDep
+            })
+            .then( res => console.log(res) )
+            .catch( err => console.log(err) ) 
 
-        window.location.reload()        
+            window.location.reload() 
+        }       
     }
 
     function addInfo(e) {
         e.preventDefault()
 
-        axios.put(`/api/user/add-info/${props.match.params.id}`, {
-            info: {title, text}
-        })
-        .then(res => console.log(res))
-        .catch(err => console.log(err))
-
-        window.location.reload()
+        if(type==='doctor') {
+            axios.put(`/api/user/add-info/${props.match.params.id}`, {
+                info: {title, text}
+            })
+            .then(res => console.log(res))
+            .catch(err => console.log(err))
+    
+            window.location.reload()
+        }
     }
+
+    function toChat(e) {
+        e.preventDefault()
+        
+        if( type === 'doctor' ) {
+            props.history.push(`/dashboard/${id}/z/${name}`)
+        }  
+    }
+
 
     return (
         <div className='profile-wr'>
-            <div className="profile-bg"></div>
+            <div className="profile-bg">    
+                <img src={bg} alt="nu este"/>
+            </div>
+
             <h1>Profile</h1>
-            <Avatar path={path} className='pic' />
+            <div className="profile-pic">
+                <Avatar path={path} className='pic' />
+                <form  className={path ? 'display-none' : ''} action={`/api/profile/${id}`} method="post" encType="multipart/form-data">
+                    <input type="file" name="avatar"  className='tests' />
+                    <button type='submit' >Send Picture</button>
+                </form>
+            </div>
+            
             <div className="general-info">
                 <p className='profile-name'> <span>Name </span> {name}</p>
                 <div>
@@ -92,12 +127,12 @@ export default function Profile(props) {
                         <input type="text" onChange={ e => setAddDep(e.target.value) } />
                         <button onClick={ e => addDepHandler(e) } >Add Departament</button>
                     </form>
-                    <button>Chat</button>
+                    <button onClick={ e=> toChat(e) }>Chat</button>
                 </div>
             </div>
-            <h1>Profile Info</h1>
-            <div className="profile-info">
-                <div className='infos'> {} </div>
+            <h1 className='br'>Profile Info</h1>
+            <div className="profile-info">{console.log(info)}
+                <div className='infos'> {info.map((data, i) => <div key={i}><div className='info-title'>{data.title.toUpperCase()} </div> <div  className='info-text'> {data.text} </div></div> )} </div>
                 <form action="">
                     <input type="text" className='profile-title' placeholder='Title' onChange={ e => setTitle(e.target.value) } />
                     <input type="text" className='profile-text' placeholder='Text' onChange={ e=> setText(e.target.value) } />

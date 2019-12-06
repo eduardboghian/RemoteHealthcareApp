@@ -1,8 +1,18 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import '../Profile/Profile.css'
 
 export default function Avatar(path) {
-    const newPath = path.path.replace(/^'(.*)'$/, '$1')
+    const [newPath, setNewPath] = useState('')
+
+    useEffect(() => {
+        if(path.path) {
+            return setNewPath(path.path.replace(/^'(.*)'$/, '$1'))
+        }
+
+        setNewPath(path)
+    }, [path])
+    
+    
 
 
     return (

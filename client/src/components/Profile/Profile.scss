@@ -3,13 +3,47 @@
 }
 
 .avatar {
-    width: 200px;
-    float: left;
+    position: relative;
+    width: 100%;
+    height: 100%;    
 
     img {
-        width: 200px;
-        height: 200px;
+        width: 100%;
+        height: 100%;
     }
+}
+
+.profile-pic {
+    float: left;
+    width: 200px;
+    height: 200px;
+    border: 1.5px solid #777;
+    border-radius: 2px;
+    position: relative;
+
+    button {
+        border: none;
+        background: #F75B4A;
+        color: #fff;    
+        height: 30px;
+        border-radius: 4px;
+        position: absolute;
+        bottom: 10%;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    form {
+        input {
+            border: none;
+            color: #fff;
+            left: 26%;
+            
+            position: relative;
+        }
+    }
+
+    
 }
 
 .profile-wr {
@@ -24,9 +58,19 @@
         position: absolute;
         width: 100%;
         height: 100%;
-        clip-path: polygon(100% 0%, 100% 100%,  0% 100%);
-        background: #3187f4;
         z-index: -1;
+
+        img {
+            width: 40%;
+            height: 40%;
+            position: absolute;
+            left: 45%;
+            top: 20px;  
+        }
+    }
+
+    button {
+        cursor: pointer;
     }
 
     h1 {
@@ -35,11 +79,16 @@
         padding: 10px 0;
     }
 
+    .br {
+        padding-top: 50px !important;
+    }
+
     .profile-info {
         width: 98%;
         height: 350px;
         border-radius: 10px; 
-        background-color: #fff;
+        background-color: inherit;
+        
     }
 
     .general-info {
@@ -74,7 +123,7 @@
 
         input {
             border: none;
-            border-bottom: 1px solid #777; 
+            border-bottom: 1.5px solid #777; 
             margin-right: 20px;
             padding-left: 10px;
             font-size: 16px;
@@ -93,7 +142,34 @@
             width: 100px
         }
         .profile-text {
-            width: 70%
+            width: 65%
+        }
+
+        .infos {
+            div {
+                background: #3187f4;
+                margin: 3px 0;
+                width: 87%;
+                border-radius: 5px;
+                color: #fff;
+                font-size: 18px;
+            }
+
+            div div {
+                
+                display: inline-block;
+            }
+
+            .info-title {
+                width: 100px;
+                font-size: 16px !important;
+                text-indent: 10px;
+            }
+
+            .info-text {
+                width: 65%;
+                text-indent: 34px;
+            }
         }
     }
 }

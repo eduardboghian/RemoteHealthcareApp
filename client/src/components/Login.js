@@ -60,7 +60,8 @@ export default function Login(props) {
             })
             .then((res) => {
                 sessionStorage.setItem('authtoken', res.headers.authtoken)
-                props.history.push(`/dashboard/${res.data._id}/z/${res.data.name}`)
+                props.history.push(`/profile/${res.data._id}`)
+            
             })
             .catch(err => console.log(err))
         }

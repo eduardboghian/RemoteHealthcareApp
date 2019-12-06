@@ -21,11 +21,6 @@ export default function Landing(props) {
         .catch(err => console.log(err)) 
     }, [])
 
-    function contactDoc(docId) {
-        let patientId = userdata._id
-        props.history.push(`/dashboard/${docId}/${patientId}/${userdata.name}`)
-    }
-
     return (
         <div className={styles.row}>
             <div className={styles.is_7}>
@@ -44,7 +39,7 @@ export default function Landing(props) {
             </div>
             
 
-            <button className='find-doc-btn' onClick={ e=> contactDoc(props) } > Contact Doctor</button>
+            <button className='find-doc-btn' > <a href='#dr'>Contact Doctor</a> </button>
         </div>
     )
     

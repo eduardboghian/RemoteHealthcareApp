@@ -119,4 +119,10 @@
   background: #F75B4A;
   font-size: 22px;
 }
+
+.home-wr .landing-board a {
+  color: #fff;
+  border: none;
+  text-decoration: none;
+}
 /*# sourceMappingURL=Home.css.map */

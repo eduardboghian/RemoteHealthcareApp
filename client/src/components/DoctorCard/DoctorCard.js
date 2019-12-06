@@ -50,6 +50,7 @@ export default function DoctorCard(props) {
         .then(res=> console.log(res))
         .catch(err=> console.log(err)) 
         setRating(newRating)
+        window.location.reload()
     }
 
     useEffect(() => {
@@ -61,7 +62,13 @@ export default function DoctorCard(props) {
             
             {doctors.map( (data, i) => {
                 return <div key={i} className='doc-card' >
-                    <Avatar path={'uploads\\71294679_2283641031965914_5005803521862270976_n.png'} />
+                    
+                    <div style={{ 
+                        width: '100%', 
+                        height: '250px',
+                        background: '#ddd'
+                     }}><Avatar path={data.profilePic} /></div>
+                    
                     <p><span>Name: </span> { data.name }</p>
                     <p className="departament"><span>Departament: </span> { data.email }</p>
                     <p className="degree"><span>Degree: </span> { data.type }</p>
