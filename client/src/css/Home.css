@@ -2,6 +2,36 @@
   width: 100%;
 }
 
+.home-wr .MyCardElement {
+  height: 40px;
+  padding: 10px 12px;
+  width: 100%;
+  color: #32325d;
+  background-color: white;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 1px 3px 0 #e6ebf1;
+          box-shadow: 0 1px 3px 0 #e6ebf1;
+  -webkit-transition: box-shadow 150ms ease;
+  -webkit-transition: -webkit-box-shadow 150ms ease;
+  transition: -webkit-box-shadow 150ms ease;
+  transition: box-shadow 150ms ease;
+  transition: box-shadow 150ms ease, -webkit-box-shadow 150ms ease;
+}
+
+.home-wr .MyCardElement--focus {
+  -webkit-box-shadow: 0 1px 3px 0 #cfd7df;
+          box-shadow: 0 1px 3px 0 #cfd7df;
+}
+
+.home-wr .MyCardElement--invalid {
+  border-color: #fa755a;
+}
+
+.home-wr .MyCardElement--webkit-autofill {
+  background-color: #fefde5 !important;
+}
+
 .home-wr nav {
   position: fixed;
   z-index: 5;

@@ -8,6 +8,7 @@ import Messages from './Messages/Messages'
 import Input from './Input/Input'
 import InfoBar from './InfoBar/InfoBar'
 import ContactList from './ContactList'
+import StripeCheckout from 'react-stripe-checkout'
 
 let socket
 
@@ -129,6 +130,16 @@ export default function Dashboard(props, location) {
         props.history.push(`/videoroom/${props.match.params.did}/${props.match.params.pid}/${userdata.name}`)
     }
 
+    function handleToken(token, adresses) {
+        console.log(token)
+
+        axios.post('/checkout', {
+            token: token
+        })
+        .then(res => console.log(res))
+        .catch(err=> console.log(err))
+    }
+
     return (
         <div> 
             <div className="dasboard">
@@ -147,6 +158,11 @@ export default function Dashboard(props, location) {
                         <Messages messages={messages} name={username} />
                     </div>
                     <div className='chat-screen-form'>
+                        <StripeCheckout
+                            stripeKey='pk_test_tgGwZH5GR5sOcJ5H1PL0GdRF00RWFNwP3z'
+                            token={handleToken} 
+                            price={19.99*100}
+                        />
                         <Input message={message} setMessage={setMessage} sendMessage={sendMessage} />
                     </div>
                     

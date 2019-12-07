@@ -7,6 +7,7 @@ import Footer from '../components/Footer/Footer'
 import ReviewsSection from '../components/ReviewsSection'
 import DocCard from '../components/DoctorCard/DoctorCard'
 
+
 export default function Home(props) {
     const [userdata, setUserdata] = useState({
         _id: '',
@@ -32,6 +33,7 @@ export default function Home(props) {
     } 
 
     return (
+
         <div >
             <div className='home-wr'>
                 <nav>
