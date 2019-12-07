@@ -108,3 +108,24 @@
         }
     }
 }
+
+@media only screen and (max-width: 600px) {
+    .doctors-wr {
+        width: 90%;
+        height: auto;
+        margin-bottom: 20px;
+        position: relative ;
+
+        .cards-wr {
+            display: block;
+            position: relative;
+            left: 50% !important;
+            transform: translateX(-50%);
+        
+            .doc-card {
+                margin: 10px 0 !important;
+                width: 100%;
+            }
+        }
+    }
+}

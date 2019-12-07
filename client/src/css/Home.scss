@@ -1,33 +1,8 @@
   .home-wr {
     width: 100%;
 
-    .MyCardElement {
-        height: 40px;
-        padding: 10px 12px;
-        width: 100%;
-        color: #32325d;
-        background-color: white;
-        border: 1px solid transparent;
-        border-radius: 4px;
-      
-        box-shadow: 0 1px 3px 0 #e6ebf1;
-        -webkit-transition: box-shadow 150ms ease;
-        transition: box-shadow 150ms ease;
-      }
-      
-      .MyCardElement--focus {
-        box-shadow: 0 1px 3px 0 #cfd7df;
-      }
-      
-      .MyCardElement--invalid {
-        border-color: #fa755a;
-      }
-      
-      .MyCardElement--webkit-autofill {
-        background-color: #fefde5 !important;
-      }
 
-    nav {
+    .desktop-nav {
         position: fixed;
         z-index: 5;
         top: 0;
@@ -155,4 +130,33 @@
     }
 
     
+}
+
+@media only screen and (max-width: 600px) {
+    .landing_is_7__2iLqM {
+        margin: 20px 30px;  
+    }
+
+    .find-doc-btn {
+        position: absolute;
+        left: 50% !important;
+        transform: translateX(-50%);
+        top: 70vh !important;
+    } 
+
+    .landing-board {
+        height: 75vh !important;
+    }
+
+    h1 {
+        position: relative;
+        left: 50%;
+        margin: 0 !important;
+        transform: translateX(-50%);
+        text-align: center;
+    }
+
+    .msgl {
+        padding: 20px;
+    }
 }

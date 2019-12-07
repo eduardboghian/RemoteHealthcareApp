@@ -36,7 +36,7 @@ export default function Home(props) {
 
         <div >
             <div className='home-wr'>
-                <nav>
+                <nav className='desktop-nav'>
                     <div className='logo'>Logo.</div>
                     <div className='nav-btns'>
                         <li>Home</li>

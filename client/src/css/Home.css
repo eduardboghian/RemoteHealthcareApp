@@ -2,37 +2,7 @@
   width: 100%;
 }
 
-.home-wr .MyCardElement {
-  height: 40px;
-  padding: 10px 12px;
-  width: 100%;
-  color: #32325d;
-  background-color: white;
-  border: 1px solid transparent;
-  border-radius: 4px;
-  -webkit-box-shadow: 0 1px 3px 0 #e6ebf1;
-          box-shadow: 0 1px 3px 0 #e6ebf1;
-  -webkit-transition: box-shadow 150ms ease;
-  -webkit-transition: -webkit-box-shadow 150ms ease;
-  transition: -webkit-box-shadow 150ms ease;
-  transition: box-shadow 150ms ease;
-  transition: box-shadow 150ms ease, -webkit-box-shadow 150ms ease;
-}
-
-.home-wr .MyCardElement--focus {
-  -webkit-box-shadow: 0 1px 3px 0 #cfd7df;
-          box-shadow: 0 1px 3px 0 #cfd7df;
-}
-
-.home-wr .MyCardElement--invalid {
-  border-color: #fa755a;
-}
-
-.home-wr .MyCardElement--webkit-autofill {
-  background-color: #fefde5 !important;
-}
-
-.home-wr nav {
+.home-wr .desktop-nav {
   position: fixed;
   z-index: 5;
   top: 0;
@@ -48,17 +18,17 @@
       grid-template-columns: auto auto auto;
 }
 
-.home-wr nav .logo {
+.home-wr .desktop-nav .logo {
   padding: 0 0 0 50px;
 }
 
-.home-wr nav .nav-btns {
+.home-wr .desktop-nav .nav-btns {
   -ms-grid-column-align: center;
       justify-self: center;
   margin: 0 0 0 10px;
 }
 
-.home-wr nav .nav-btns li {
+.home-wr .desktop-nav .nav-btns li {
   list-style: none;
   display: inline-block;
   margin: 0 50px;
@@ -66,25 +36,25 @@
   cursor: pointer;
 }
 
-.home-wr nav .user-bar {
+.home-wr .desktop-nav .user-bar {
   -ms-grid-column-align: right;
       justify-self: right;
   padding: 0 50px 0 0;
   font-size: 18px;
 }
 
-.home-wr nav .auth-bar a {
+.home-wr .desktop-nav .auth-bar a {
   color: white;
   font-size: 16px;
   text-decoration: none;
   margin: 0 10px;
 }
 
-.home-wr nav .username {
+.home-wr .desktop-nav .username {
   cursor: pointer;
 }
 
-.home-wr nav .logout {
+.home-wr .desktop-nav .logout {
   width: 80px;
   text-align: center;
   height: 35px;
@@ -154,5 +124,32 @@
   color: #fff;
   border: none;
   text-decoration: none;
+}
+
+@media only screen and (max-width: 600px) {
+  .landing_is_7__2iLqM {
+    margin: 20px 30px;
+  }
+  .find-doc-btn {
+    position: absolute;
+    left: 50% !important;
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+    top: 70vh !important;
+  }
+  .landing-board {
+    height: 75vh !important;
+  }
+  h1 {
+    position: relative;
+    left: 50%;
+    margin: 0 !important;
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+    text-align: center;
+  }
+  .msgl {
+    padding: 20px;
+  }
 }
 /*# sourceMappingURL=Home.css.map */

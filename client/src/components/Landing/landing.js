@@ -28,7 +28,7 @@ export default function Landing(props) {
             </div>
             <div className={styles.is_5}>
                 <div className={styles.tagLine}>
-                    <h1>We are providing remote<br />Health Care Services</h1>
+                    <h1 className='msgl'>We are providing remote<br />Health Care Services</h1>
                 </div>
             </div>
             <div className={styles.is_12}>
@@ -38,7 +38,6 @@ export default function Landing(props) {
                 <span>scroll</span>
             </div>
             
-
             <button className='find-doc-btn' > <a href='#dr'>Contact Doctor</a> </button>
         </div>
     )

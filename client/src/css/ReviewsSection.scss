@@ -68,3 +68,27 @@
         }
     }
 }
+
+@media only screen and(max-width: 600px) {
+    .reviews-wr {
+        width: 96%;
+
+        .reviews-screen {
+            padding-top: 10px;
+
+            
+        }
+
+        .css-y1c0xs {
+            height: 105%;
+        }
+
+        input {
+            width: 60% !important;
+        }
+
+        .sendButton {
+            width: 20% !important;
+        }
+    }
+}
