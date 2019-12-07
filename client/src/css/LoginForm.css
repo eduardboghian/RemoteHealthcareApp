@@ -115,4 +115,11 @@
   padding: 5px 20px;
   cursor: pointer;
 }
+
+@media only screen and (max-width: 600px) {
+  .login-wr {
+    width: 92% !important;
+    margin: 20vh 4% !important;
+  }
+}
 /*# sourceMappingURL=LoginForm.css.map */

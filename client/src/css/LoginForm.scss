@@ -111,3 +111,10 @@
         }
     }
 }
+
+@media only screen and(max-width: 600px) {
+    .login-wr {
+        width: 92% !important;
+        margin: 20vh 4% !important;
+    }
+}

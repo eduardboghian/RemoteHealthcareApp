@@ -103,4 +103,11 @@
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
 }
+
+@media only screen and (max-width: 600px) {
+  .wr {
+    width: 92% !important;
+    margin: 10vh 4% !important;
+  }
+}
 /*# sourceMappingURL=RegisterForm.css.map */
