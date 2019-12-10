@@ -59,7 +59,11 @@ router.post('/register/doctor', async (req, res) => {
         idCardNr: req.body.idCardNr,
         type: 'doctor',
         approved: false,
-        contactList: [] 
+        contactList: [],
+        profilePic: '',
+        degree: '',
+        departament: '',
+        profileInfo: []
     })
     doc = await doc.save()
 
