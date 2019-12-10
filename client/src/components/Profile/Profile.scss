@@ -46,10 +46,81 @@
     
 }
 
+.logo {
+    padding: 0 0 0 80px;
+    font-family: 'Great Vibes', cursive;
+    font-size: 28px;
+}
+
+
+.desktop-nav {
+    position: fixed;
+    z-index: 5;
+    top: 0;
+    width: 60%;
+    height: 40px;
+    background: #3187f4;
+    font-size: 16px;
+    display: grid;
+    padding: 14px 0 0;
+    color: white;
+    grid-template-columns: auto auto auto;
+
+    
+
+    .nav-btns {
+        justify-self: center;
+        margin: 0 0 0 10px;
+    
+        li {
+            list-style: none;
+            display: inline-block;
+            margin: 0 50px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    }
+
+    .user-bar {
+        justify-self: right;
+        padding: 0 50px 0 0;
+        font-size: 18px;
+    }
+
+    .auth-bar {
+
+
+        a {
+            color: white;
+            font-size: 16px;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+    }
+
+    .username {
+        cursor: pointer;
+    }
+
+    .logout {
+        width: 80px;
+        text-align: center;
+        height: 35px;
+        background: #F75B4A;
+        border-radius: 10px;
+        float: right;
+        position: relative;
+        top: -4px;
+        margin-left: 15px;
+        line-height: 32px;
+    }
+}
+
 .profile-wr {
     width: 70%;
     height: 100vh;
-    margin: 0 auto; 
+    margin: 60px auto 0; 
     padding: 0 20px; 
      
     position: relative;

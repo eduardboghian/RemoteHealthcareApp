@@ -2,6 +2,12 @@
   width: 100%;
 }
 
+.home-wr .logo {
+  padding: 0 0 0 80px;
+  font-family: 'Great Vibes', cursive;
+  font-size: 28px;
+}
+
 .home-wr .desktop-nav {
   position: fixed;
   z-index: 5;
@@ -16,10 +22,6 @@
   color: white;
   -ms-grid-columns: auto auto auto;
       grid-template-columns: auto auto auto;
-}
-
-.home-wr .desktop-nav .logo {
-  padding: 0 0 0 50px;
 }
 
 .home-wr .desktop-nav .nav-btns {

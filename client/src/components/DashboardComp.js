@@ -146,7 +146,7 @@ export default function Dashboard(props, location) {
                 <Link to='/' className="back-home">Go Back Home</Link>
                 <div className="top-bar">
                     <p>User: {userdata.name} {doctor.map(data=>data.name)}</p>
-                    <div className="videocall" onClick={ e => handleClick(e) }><img src={vcall} alt=""/></div>
+                    <div  className="videocall" onClick={ e => handleClick(e) }><img src={vcall} alt=""/></div>
                 </div>
                 
                 <div className="contact-list">

@@ -13,19 +13,18 @@ class Footer extends Component {
 	render() {
 		return (
 			<div className={styles.Bottom}>
-				<div className={styles.firstFooterBox}>
+				{/* <div className={styles.firstFooterBox}>
 					<a href="#TOP">About</a>
 					<a href="#TOP">Need Help?</a>
 					<a href="#TOP">Privacy</a>
-				</div>
+				</div> */}
 				<div className={styles.secondFooterBox}>
 					<div>
 						<p>
-							Using react-icons package, color of icons can be
-							changed.
+							RemoteHealthCare ©2019 
 						</p>
 					</div>
-					<ul>
+					{/* <ul>
 						<li>
 							<i>
 								{''}
@@ -62,7 +61,7 @@ class Footer extends Component {
 								WhatsApp
 							</a>
 						</li>
-					</ul>
+					</ul> */}
 				</div>
 			</div>
 		);

@@ -53,7 +53,7 @@ export default function VideoRoom(props) {
         document.getElementById('room-controls').style.display = 'block';
 
         // Bind button to join Room.
-        document.getElementById('button-join').onclick = function() {
+        //document.getElementById('button-join').onclick = function() {}
             roomName = props.match.params.did+props.match.params.pid
             if (!roomName) {
                 alert('Please enter a room name.')
@@ -75,7 +75,7 @@ export default function VideoRoom(props) {
             Video.connect(data.data.token, connectOptions).then(roomJoined, function(error) {
                 console.log('Could not connect to Twilio: ' + error.message);
             })
-        }
+        
 
         // Bind button to leave Room.
         document.getElementById('button-leave').onclick = function() {
@@ -190,7 +190,7 @@ export default function VideoRoom(props) {
                     <div id="local-media" className="local-media"></div>
                 </div>
                 <div id="room-controls" className="room-controls">
-                    <button id="button-join">Join Room</button>
+                    <button id="button-join"></button>
                     <button id="button-leave" className="button-leave">Leave Room</button>
                 </div>
                 <div id="log" className="log"></div>

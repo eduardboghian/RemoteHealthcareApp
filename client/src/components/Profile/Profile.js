@@ -3,7 +3,8 @@ import './Profile.css'
 import axios from 'axios'
 import Avatar from '../DoctorCard/Avatar'
 import bg from '../../media/bg.svg'
-
+import { Link } from 'react-router-dom'
+ 
 export default function Profile(props) {
     const [user, setUser] = useState([])
     const [path, setPath] = useState(' ')
@@ -17,6 +18,22 @@ export default function Profile(props) {
     const [info, setInfo] = useState([])
     const [id, setId] = useState('')
     const [type, setType] = useState('')
+
+    const [userdata, setUserdata] = useState({
+        _id: '',
+        name: '',
+        email: ''
+    })
+
+    useEffect(() => {
+        axios.post('/api/user/getinfo', {
+            token: sessionStorage.getItem('authtoken')
+        })
+        .then(res=> {
+            setUserdata({ _id: res.data._id, name: res.data.name, email: res.data.email })
+        })
+        .catch(err => console.log(err)) 
+    }, [])
     
 
     useEffect(() => {
@@ -96,20 +113,52 @@ export default function Profile(props) {
         }  
     }
 
+    function handleLogout(e) {
+        e.preventDefault()
+
+        sessionStorage.removeItem('authtoken')
+        props.history.push(`/login`)
+    } 
+
+    function home() {
+        props.history.push(`/`)
+    }
+
 
     return (
         <div className='profile-wr'>
+            <nav className='desktop-nav'>
+                    <div className='logo' >Remote Health Care</div>
+                    <div className='nav-btns'>
+                        <li></li>
+                        <li onClick={e=>home()}>Home</li>
+                        <li></li>
+                    </div>
+                    <div className="user-bar">
+                        
+                        <div className={ userdata.name ? 'display-none' : 'auth-bar' }> <Link className='login-btn' to='/login' >Login</ Link> <Link to='/register' >Sign Up</Link> </div>
+                        <div className={ userdata.name ? 'username' : 'display-none'}>
+                            {userdata.name}
+                            <div className="logout" onClick={ e => handleLogout(e) }>Log out</div>
+                        </div>
+                    </div>
+                    
+                </nav>
             <div className="profile-bg">    
                 <img src={bg} alt="nu este"/>
             </div>
+            
 
             <h1>Profile</h1>
             <div className="profile-pic">
                 <Avatar path={path} className='pic' />
-                <form  className={path ? 'display-none' : ''} action={`/api/profile/${id}`} method="post" encType="multipart/form-data">
-                    <input type="file" name="avatar"  className='tests' />
-                    <button type='submit' >Send Picture</button>
-                </form>
+                <div className={ type==='patient' ? 'display-none' : ' ' }>
+                    <form  className={path ? 'display-none' : ''} action={`/api/profile/${id}`} method="post" encType="multipart/form-data">
+                        <input type="file" name="avatar"  className='tests' />
+                        <button type='submit' >Send Picture</button>
+                    </form>
+                </div>
+                
             </div>
             
             <div className="general-info">

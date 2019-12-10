@@ -1,5 +1,10 @@
   .home-wr {
     width: 100%;
+    .logo {
+        padding: 0 0 0 80px;
+        font-family: 'Great Vibes', cursive;
+        font-size: 28px;
+    }
 
 
     .desktop-nav {
@@ -15,9 +20,7 @@
         color: white;
         grid-template-columns: auto auto auto;
 
-        .logo {
-            padding: 0 0 0 50px;
-        }
+        
 
         .nav-btns {
             justify-self: center;

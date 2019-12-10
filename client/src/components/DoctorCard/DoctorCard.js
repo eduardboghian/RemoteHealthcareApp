@@ -53,9 +53,10 @@ export default function DoctorCard(props) {
         window.location.reload()
     }
 
-    useEffect(() => {
-        
-    }, [rating])
+    const handleClick = (docId) => {
+        let patientId = userdata._id
+        props.props.history.push(`/videoroom/${docId}/${patientId}/${userdata.name}`)
+    }
 
     return (
         <div className='cards-wr'>
@@ -70,12 +71,12 @@ export default function DoctorCard(props) {
                      }}><Avatar path={data.profilePic} /></div>
                     
                     <p><span>Name: </span> { data.name }</p>
-                    <p className="departament"><span>Departament: </span> { data.email }</p>
-                    <p className="degree"><span>Degree: </span> { data.type }</p>
+                    <p className="departament"><span>Departament: </span> { data.departament }</p>
+                    <p className="degree"><span>Degree: </span> { data.degree }</p>
                     <div className="contact-doc">
                         <button className="more-info" onClick={ e=> handleSeeProfile(data._id) }>Profile</button>
                         <button className='text-doc' onClick={ e => contactDoc(data._id)}> <img src={textIcon} alt=""/> </button>
-                        <button className="videocall-doc"> <img src={videoIcon} alt=""/> </button>
+                        <button className="videocall-doc" onClick={ e=> handleClick(data._id) }> <img src={videoIcon} alt=""/> </button>
                     </div>
                     <div className='rating'>{ (data.rating/data.raters ).toFixed(2) }</div>
                     <StarRatings

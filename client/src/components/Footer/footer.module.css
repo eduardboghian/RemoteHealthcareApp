@@ -145,7 +145,7 @@
   display: flex;
   background-color: #2f2f2f;
   position: relative;
-  min-height: 300px;
+  min-height: 80px;
   margin-bottom: 0;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
