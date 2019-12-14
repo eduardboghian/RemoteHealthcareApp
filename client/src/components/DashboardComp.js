@@ -159,7 +159,7 @@ export default function Dashboard(props, location) {
                     </div>
                     <div className='chat-screen-form'>
                         <StripeCheckout
-                            stripeKey='pk_test_eulYepC4bTmL324nqSUAuWNN00Z4dFFkNj'
+                            stripeKey='pk_test_tgGwZH5GR5sOcJ5H1PL0GdRF00RWFNwP3z'
                             token={handleToken} 
                             price={19.99*100}
                         />

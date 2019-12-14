@@ -145,7 +145,7 @@ app.get('/api/token/:name', function(request, response) {
 
 // STRIPE IMPLEMENTATION
 
-const stripe = require("stripe")("sk_test_vIpqlRKSUEUbJNdpxBQcjcBI00VQHOf7TI")
+const stripe = require("stripe")("sk_test_ggCjI9rKE5AlDbdy2afR8SqG005pQTMGCn")
 const uuid = require("uuid/v4")
 
 app.post("/checkout", async (req, res) => {
