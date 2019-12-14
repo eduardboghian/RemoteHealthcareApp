@@ -179,10 +179,10 @@ export default function Profile(props) {
                     <button onClick={ e=> toChat(e) }>Chat</button>
                 </div>
             </div>
-            <h1 className='br'>Profile Info</h1>
-            <div className="profile-info">{console.log(info)}
+            <h1 className='br'>Profile Info</h1>{console.log(type)}
+            <div className= 'profile-info' >
                 <div className='infos'> {info.map((data, i) => <div key={i}><div className='info-title'>{data.title.toUpperCase()} </div> <div  className='info-text'> {data.text} </div></div> )} </div>
-                <form action="">
+                <form className= {type==='doctor' ? '' : 'display-none' } >
                     <input type="text" className='profile-title' placeholder='Title' onChange={ e => setTitle(e.target.value) } />
                     <input type="text" className='profile-text' placeholder='Text' onChange={ e=> setText(e.target.value) } />
                     <button onClick={ e => addInfo(e) }>Add</button>

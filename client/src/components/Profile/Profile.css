@@ -227,4 +227,16 @@
   width: 65%;
   text-indent: 34px;
 }
+
+@media only screen and (max-width: 1000px) {
+  .profile-wr {
+    width: 90%;
+  }
+  .logo {
+    font-size: 24px !important;
+  }
+  .desktop-nav {
+    width: 78%;
+  }
+}
 /*# sourceMappingURL=Profile.css.map */
