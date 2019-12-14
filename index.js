@@ -121,8 +121,8 @@ let VideoGrant = AccessToken.VideoGrant
 app.get('/api/token/:name', function(request, response) {
   let identity = request.params.name
 
-  // Create an access token which we will sign and return to the client,
-  // containing the grant we just created.
+  // Create an access token which we will sign and return to the client, containing the grant we just created.
+
   let token = new AccessToken(
     process.env.TWILIO_ACCOUNT_SID,
     process.env.TWILIO_API_KEY,
