@@ -2,7 +2,7 @@
 
 # Live Chat with socket.io
 
-# Twillio implementation for vVideo calls
+# Twilio implementation for Video calls
 
 # Authentication system with JWT
 
