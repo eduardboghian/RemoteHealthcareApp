@@ -2,6 +2,6 @@
 
 # Twillio implementation
 
-#Stripe implementation
+# Stripe implementation
 
-#Live Chat with socket.io
+# Live Chat with socket.io
